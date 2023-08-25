@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "608904869263",
+    "project_id": "skinscanv2",
+    "storage_bucket": "skinscanv2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:608904869263:android:42ca672117670ec2cb87fa",
+        "android_client_info": {
+          "package_name": "com.example.skinscan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "608904869263-gmpie5l9qgeq8usolt0gq6impmqcp9er.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdfogfsB4roNXJLsJNfNE1s-0wcSywMAg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "608904869263-gmpie5l9qgeq8usolt0gq6impmqcp9er.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
