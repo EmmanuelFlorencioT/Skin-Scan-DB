@@ -36,6 +36,7 @@
 | Codificación del modelo propuesto en el framework indicado                 | 10/09/23                 |                      | 15/09/23              |                   | 7 horas          | Emmanuel Florencio Trujillo, Isai Vicente Moreno Lara  | En Progreso |
 | Entrenamiento del Modelo Propuesto                                         | 16/09/23                 |                      | 21/09/23              |                   | 5 horas          | Emmanuel Florencio Trujillo, Isai Vicente Moreno Lara  | En Progreso |
 
+#### Sprint Review
 
 |                                                                            | Fecha de Inicio Estimada | Fecha de Inicio Real | Fecha de Fin Estimada | Fecha de Fin Real | Duración (horas) | Responsables                                           | Status      |
 |----------------------------------------------------------------------------|--------------------------|----------------------|-----------------------|-------------------|------------------|--------------------------------------------------------|-------------|
