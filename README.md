@@ -11,6 +11,8 @@
 
 ### Cronograma del proyecto
 
+#### 1° Sprint Review
+
 |                                                                            | Fecha de Inicio Estimada | Fecha de Inicio Real | Fecha de Fin Estimada | Fecha de Fin Real | Duración (horas) | Responsables                                           | Status      |
 |----------------------------------------------------------------------------|--------------------------|----------------------|-----------------------|-------------------|------------------|--------------------------------------------------------|-------------|
 | **_Desarrollo de la Inteligencia Artificial_**                             | 28/08/23                 |                      | 27/09/23              |                   |                  |                                                        |             |
@@ -22,12 +24,21 @@
 | Contabilizar las imágenes disponibles                                      | 01/09/23                 | 01/09/2023           | 01/09/23              | 01/09/2023        | 1 hora           | Emmanuel Florencio Trujillo                            | Completada  |
 | Generación de nuevas imágenes                                              | 04/09/23                 | 04/09/2023           | 07/09/23              | 07/09/2023        | 5 horas          | Emmanuel Florencio Trujillo                            | Completada  |
 | Separación de las imágenes de entrenamiento y prueba                       | 07/09/23                 | 07/09/2023           | 09/09/23              | 09/09/2023        | 3 horas          | Isai Vicente Moreno Lara                               | Completada  |
+
+#### 2° Sprint Review
+
+|                                                                            | Fecha de Inicio Estimada | Fecha de Inicio Real | Fecha de Fin Estimada | Fecha de Fin Real | Duración (horas) | Responsables                                           | Status      |
+|----------------------------------------------------------------------------|--------------------------|----------------------|-----------------------|-------------------|------------------|--------------------------------------------------------|-------------|
 | **Diseño de la Red Neuronal**                                              | 09/09/23                 |                      | 11/09/23              |                   | 5 horas          |                                                        |             |
 | Investigación de arquitecturas para procesamiento de imágenes              | 09/09/23                 | 08/09/2023           | 11/09/23              |                   | 5 horas          | Isai Vicente Moreno Lara                               | En Progreso |
 | **Implementación de la Red Neuronal**                                      | 09/09/23                 |                      | 21/09/23              |                   | 20 horas         |                                                        |             |
 | Lectura de la documentación de Tensorflow                                  | 09/09/23                 |                      | 09/09/23              |                   | 8 horas          | Emmanuel Florencio Trujillo, Isai Vicente Moreno Lara  | En Progreso |
 | Codificación del modelo propuesto en el framework indicado                 | 10/09/23                 |                      | 15/09/23              |                   | 7 horas          | Emmanuel Florencio Trujillo, Isai Vicente Moreno Lara  | En Progreso |
 | Entrenamiento del Modelo Propuesto                                         | 16/09/23                 |                      | 21/09/23              |                   | 5 horas          | Emmanuel Florencio Trujillo, Isai Vicente Moreno Lara  | En Progreso |
+
+
+|                                                                            | Fecha de Inicio Estimada | Fecha de Inicio Real | Fecha de Fin Estimada | Fecha de Fin Real | Duración (horas) | Responsables                                           | Status      |
+|----------------------------------------------------------------------------|--------------------------|----------------------|-----------------------|-------------------|------------------|--------------------------------------------------------|-------------|
 | **Evaluación del Modelo Propuesto**                                        | 26/09/23                 |                      | 09/10/23              |                   | 6 horas          |                                                        |             |
 | Medición de la precisión del modelo                                        | 26/09/23                 |                      | 29/09/23              |                   | 2 horas          | Emmanuel Florencio Trujillo                            | Pendiente   |
 | Generación de un reporte de clasificación                                  | 29/09/23                 |                      | 04/10/23              |                   | 2 horas          | Emmanuel Florencio Trujillo                            | Pendiente   |
