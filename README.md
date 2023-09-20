@@ -27,14 +27,14 @@
 
 #### 2° Sprint Review
 
-|                                                                            | Fecha de Inicio Estimada | Fecha de Inicio Real | Fecha de Fin Estimada | Fecha de Fin Real | Duración (horas) | Responsables                                           | Status      |
-|----------------------------------------------------------------------------|--------------------------|----------------------|-----------------------|-------------------|------------------|--------------------------------------------------------|-------------|
-| **Diseño de la Red Neuronal**                                              | 09/09/23                 |                      | 11/09/23              |                   | 5 horas          |                                                        |             |
-| Investigación de arquitecturas para procesamiento de imágenes              | 09/09/23                 | 08/09/2023           | 11/09/23              |                   | 5 horas          | Isai Vicente Moreno Lara                               | En Progreso |
-| **Implementación de la Red Neuronal**                                      | 09/09/23                 |                      | 21/09/23              |                   | 20 horas         |                                                        |             |
-| Lectura de la documentación de Tensorflow                                  | 09/09/23                 |                      | 09/09/23              |                   | 8 horas          | Emmanuel Florencio Trujillo, Isai Vicente Moreno Lara  | En Progreso |
-| Codificación del modelo propuesto en el framework indicado                 | 10/09/23                 |                      | 15/09/23              |                   | 7 horas          | Emmanuel Florencio Trujillo, Isai Vicente Moreno Lara  | En Progreso |
-| Entrenamiento del Modelo Propuesto                                         | 16/09/23                 |                      | 21/09/23              |                   | 5 horas          | Emmanuel Florencio Trujillo, Isai Vicente Moreno Lara  | En Progreso |
+|                                                                            | Fecha de Inicio Estimada | Fecha de Inicio Real | Fecha de Fin Estimada | Fecha de Fin Real | Duración (horas) | Responsables                                           | Status       |
+|----------------------------------------------------------------------------|--------------------------|----------------------|-----------------------|-------------------|------------------|--------------------------------------------------------|--------------|
+| **Diseño de la Red Neuronal**                                              | 09/09/23                 |                      | 11/09/23              |                   | 5 horas          |                                                        |              |
+| Investigación de arquitecturas para procesamiento de imágenes              | 09/09/23                 | 08/09/2023           | 11/09/23              | 10/09/23          | 5 horas          | Isai Vicente Moreno Lara                               | Completada   |
+| **Implementación de la Red Neuronal**                                      | 09/09/23                 |                      | 21/09/23              |                   | 20 horas         |                                                        |              |
+| Lectura de la documentación de Tensorflow                                  | 09/09/23                 | 08/09/2023           | 09/09/23              | 08/09/202         | 8 horas          | Emmanuel Florencio Trujillo, Isai Vicente Moreno Lara  | Completada   |
+| Codificación del modelo propuesto en el framework indicado                 | 10/09/23                 | 09/09/2023           | 15/09/23              | 14/09/2023        | 7 horas          | Emmanuel Florencio Trujillo, Isai Vicente Moreno Lara  | Completada   |
+| Entrenamiento del Modelo Propuesto                                         | 16/09/23                 | 15/09/2023           | 21/09/23              | 20/09/2023        | 5 horas          | Emmanuel Florencio Trujillo, Isai Vicente Moreno Lara  | Completada   |
 
 #### Sprint Review
 
