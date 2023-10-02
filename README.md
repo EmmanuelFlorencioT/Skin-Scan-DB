@@ -105,8 +105,7 @@
 | Validar y verificar la información del usuario                             | 10/11/23                 |                      | 10/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara               | Pendiente   |
 | Implementar la autenticación de correo electrónico                         | 11/11/23                 |                      | 12/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara               | Pendiente   |
 | Almacenar los datos de registro en una base de datos                       | 12/11/23                 |                      | 13/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara               | Pendiente   |
-| **Formulario de Inicio de Sesión** 					    | 14/11/23	|	| 16/11/23	|	
-| 4 horas                 |                                                        |             |
+| **Formulario de Inicio de Sesión** 					    | 14/11/23	|	| 16/11/23	|	| 4 horas                 |                                                        |             |
 | Implementar la autenticación de usuario                                    | 14/11/23                 |                      | 15/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara               | Pendiente   |
 | Validar las credenciales del usuario                                       | 15/11/23                 |                      | 16/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara               | Pendiente   |
 
@@ -119,11 +118,11 @@
 | Procesar y analizar los datos del escaneo                                  | 21/11/23                 |                      | 22/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara               | Pendiente   |
 | Mostrar resultados o análisis de la piel al usuario                        | 22/11/23                 |                      | 23/11/23              |                   | 2 horas          | Neftali Limon Ortiz, Marco Lopez Arriaga               | Pendiente   |
 | Almacenar los datos del escaneo si es necesario                            | 23/11/23                 |                      | 23/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara               | Pendiente   |
-| **Expedientes**                                                               | 24/11/23                 |                      | 26/11/23              |                   |                  |                                                        |             |
+| **Expedientes**                                                               | 24/11/23                 |                      | 26/11/23              |                   | 2 horas                 |                                                        |             |
 | Permitir la exportación de expedientes en diferentes formato PDF              | 24/11/23                 |                      | 26/11/23              |                   | 2 horas          | Neftali Limon Ortiz, Marco Lopez Arriaga               | Pendiente   |
-| **Conexión pantalla Perfil con la Base de Datos**                                                                 | 27/11/23                 |                      | 28/11/23              |                   
+| **Conexión pantalla Perfil con la Base de Datos**                                                                 | 27/11/23                 |                      | 28/11/23              |      |	2 horas	             
 | Mostrar información personal del usuario                                   | 27/11/23                 |                      | 28/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara               | Pendiente   |
-| **Modificación del perfil de usuario**                                     | 29/11/23                 |                      | 22/10/23              |                   |                  |                                                        |             |
+| **Modificación del perfil de usuario**                                     | 29/11/23                 |                      | 22/10/23              |                   | 4 horas                 |                                                        |             |
 | Creación de función de modificación de usuario                             | 29/11/23                 |                      | 30/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara    | Pendiente   |
 | Verificación en la funcion modificacion de usuario                         | 30/11/23                 |                      | 01/12/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara    | Pendiente   |
 
@@ -132,9 +131,9 @@
 |                                                                            | Fecha de Inicio Estimada | Fecha de Inicio Real | Fecha de Fin Estimada | Fecha de Fin Real | Duración (horas) | Responsables                                           | Status      |
 |----------------------------------------------------------------------------|--------------------------|----------------------|-----------------------|-------------------|------------------|--------------------------------------------------------|-------------|
 |                  |                                                        |             |
-| **Modificación de expedientes generados por el usuario**                      | 04/12/23                 |                      | 09/12/23              |                   |                  |                                                        |             |
+| **Modificación de expedientes generados por el usuario**                      | 04/12/23                 |                      | 09/12/23              |                   | 2 horas                 |                                                        |             |
 | Acceso a los expedientes de un usuario determinado                            | 04/12/23                 |                      | 09/12/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara    | Pendiente   |
-| **Integración de la Base de datos con la aplicación**                      | 10/12/23                 |                      | 14/12/23              |                   |                  |                                                        |             |
+| **Integración de la Base de datos con la aplicación**                      | 10/12/23                 |                      | 14/12/23              |                   | 2 horas                 |                                                        |             |
 | Integración de la Base de datos con la aplicación                            | 10/12/23                 |                      | 14/12/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara    | Pendiente   |
 
 
@@ -145,5 +144,4 @@
 |----------------------------------------------------------------------------|--------------------------|----------------------|-----------------------|-------------------|------------------|--------------------------------------------------------|-------------|
 | **_Backend_**                                                              | 01/09/23                 |                      | 28/11/23              |                   
 | **_Frontend_**                                                             | 06/09/23                 |                      | 30/11/23              |                   |                  |                                                        |             |
-
 
