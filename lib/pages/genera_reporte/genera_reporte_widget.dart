@@ -17,7 +17,10 @@ class GeneraReporteWidget extends StatefulWidget {
 
 class _GeneraReporteWidgetState extends State<GeneraReporteWidget> {
   late GeneraReporteModel _model;
-
+  TextEditingController _Edadcontroler = TextEditingController();
+  int _intValue = 0;
+  TextEditingController _PesoController = TextEditingController();
+  double _floatValue = 0.0;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -281,7 +284,15 @@ class _GeneraReporteWidgetState extends State<GeneraReporteWidget> {
                                   child: Container(
                                     decoration: BoxDecoration(),
                                     child: TextFormField(
+                                      controller: _Edadcontroler,
+                                      keyboardType: TextInputType.number,
                                       //controller: _model.firstFieldController, // Debes crear el controlador
+                                                    onChanged: (value) {
+                setState(() {
+                  // Intenta convertir el texto a int, si es válido, actualiza _intValue
+                  _intValue = int.tryParse(value) ?? 0;
+                });
+              },
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         hintText: 'Edad',
@@ -334,8 +345,26 @@ class _GeneraReporteWidgetState extends State<GeneraReporteWidget> {
                                   child: Container(
                                     decoration: BoxDecoration(),
                                     child: TextFormField(
-                                      //controller: _model.secondFieldController, // Debes crear el controlador
+                                      controller: _PesoController, // Debes crear el controlador
+                                      keyboardType: TextInputType.numberWithOptions(decimal: true),
                                       obscureText: false,
+                                                  validator: (value) {
+              // Validación personalizada para asegurarse de que es un número decimal válido
+              if (value==null) {
+                return 'Por favor, ingrese un número';
+              }
+              final numericValue = double.tryParse(value);
+              if (numericValue == null) {
+                return 'Ingrese un número decimal válido';
+              }
+              return null; // La validación pasó
+            },
+            onChanged: (value) {
+              // Actualiza el valor float cuando el usuario escribe en el campo
+              setState(() {
+                _floatValue = double.parse(value);
+              });
+            },
                                       decoration: InputDecoration(
                                         hintText: 'Peso',
                                         enabledBorder: OutlineInputBorder(
