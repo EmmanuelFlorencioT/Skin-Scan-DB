@@ -85,7 +85,7 @@
 | Desarrollo de frontend de expedientes en diferentes formato PDF              | 26/10/23                 |                      | 27/10/23              |                   | 4 horas          | Neftali Limon Ortiz, Marco Lopez Arriaga               | Pendiente   |
 | **Frontend Filtro Expedientes**                                                               | 27/10/23                 |                      | 29/10/23              |                   | 6 horas                 |                                                        |             |
 | Diseñar la interfaz de usuario para el filtro de expedientes           | 27/10/23                 |                      | 27/10/23              |                   | 2 horas          | Neftali Limon Ortiz, Marco Lopez Arriaga               | Pendiente   |
-| Desarrollar el frontend para la pantalla de filtro expedientes                                | 28/10/23                 |                      | 29/10/23              | 4 horas          | Neftali Limon Ortiz, Marco Lopez Arriaga               | Pendiente   |
+| Desarrollar el frontend para la pantalla de filtro expedientes                                | 28/10/23                 |                      | 29/10/23   |           | 4 horas          | Neftali Limon Ortiz, Marco Lopez Arriaga               | Pendiente   |
 | **Conexión de la base de datos con la App**                                | 29/09/23                 |                      | 03/11/23              |                   | 6 horas                 |                                                        |             |
 | Crear proyecto en Firebase para la app                                     | 29/09/23                 |                      | 30/09/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara    | Pendiente   |
 | Conectar el proyecto de firebase con la app                                | 30/09/23                 |                      | 31/09/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara    | Pendiente   |
@@ -145,4 +145,5 @@
 |----------------------------------------------------------------------------|--------------------------|----------------------|-----------------------|-------------------|------------------|--------------------------------------------------------|-------------|
 | **_Backend_**                                                              | 01/09/23                 |                      | 28/11/23              |                   
 | **_Frontend_**                                                             | 06/09/23                 |                      | 30/11/23              |                   |                  |                                                        |             |
+
 
