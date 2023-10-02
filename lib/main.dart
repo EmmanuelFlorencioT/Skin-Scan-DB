@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/home',
       routes: {
-        '/home': (context) => const GeneraReporteWidget(),
+        '/home': (context) => const HomePageWidget(),
         '/registrar': (context) => const RegistrateWidget(),
         '/iniciarSesion': (context) => const IniciarSesionWidget(),
         //'/perfil': (context) => PerfilWidget(),
