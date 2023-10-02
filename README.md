@@ -109,6 +109,11 @@
 |                  |                                                        |             |
 | Implementar la autenticación de usuario                                    | 26/09/23                 |                      | 28/09/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara               | Pendiente   |
 | Validar las credenciales del usuario                                       | 29/09/23                 |                      | 30/09/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara               | Pendiente   |
+
+#### 7° Sprint Review
+
+|                                                                            | Fecha de Inicio Estimada | Fecha de Inicio Real | Fecha de Fin Estimada | Fecha de Fin Real | Duración (horas) | Responsables                                           | Status      |
+|----------------------------------------------------------------------------|--------------------------|----------------------|-----------------------|-------------------|------------------|--------------------------------------------------------|-------------|
 | **Integración del modelo de IA con la aplicación**                      | 22/10/23                 |                      | 25/11/23              |                   |                  |                                                        |             |
 | Integración del modelo de IA con la aplicación                            | 22/10/23                 |                      | 25/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara    | Pendiente   |
 | Procesar y analizar los datos del escaneo                                  | 12/11/23                 |                      | 17/11/23              |                   | 2 horas          | Neftali Limon Ortiz, Marco Lopez Arriaga               | Pendiente   |
@@ -116,18 +121,11 @@
 | Almacenar los datos del escaneo si es necesario                            | 24/11/23                 |                      | 27/11/23              |                   | 2 horas          | Neftali Limon Ortiz, Marco Lopez Arriaga               | Pendiente   |
 | **Expedientes**                                                               | 16/10/23                 |                      | 30/10/23              |                   |                  |                                                        |             |
 | Permitir la exportación de expedientes en diferentes formato PDF              | 26/10/23                 |                      | 30/10/23              |                   | 2 horas          | Neftali Limon Ortiz, Marco Lopez Arriaga               | Pendiente   |
-
-
-#### 7° Sprint Review
-
-|                                                                            | Fecha de Inicio Estimada | Fecha de Inicio Real | Fecha de Fin Estimada | Fecha de Fin Real | Duración (horas) | Responsables                                           | Status      |
-|----------------------------------------------------------------------------|--------------------------|----------------------|-----------------------|-------------------|------------------|--------------------------------------------------------|-------------|
+| **Conexión pantalla Perfil con la Base de Datos**                                                                 | 01/10/23                 |                      | 15/10/23              |                   
+| Mostrar información personal del usuario                                   | 08/10/23                 |                      | 15/10/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara               | Pendiente   |
 | **Modificación del perfil de usuario**                                     | 29/09/23                 |                      | 22/10/23              |                   |                  |                                                        |             |
 | Creación de función de modificación de usuario                             | 29/09/23                 |                      | 10/10/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara    | Pendiente   |
 | Verificación en la funcion modificacion de usuario                         | 10/10/23                 |                      | 22/10/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara    | Pendiente   |
-| **Conexión pantalla Perfil con la Base de Datos**                                                                 | 01/10/23                 |                      | 15/10/23              |                   
-| Mostrar información personal del usuario                                   | 08/10/23                 |                      | 15/10/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara               | Pendiente   |
-
 
 #### 8° Sprint Review
 
