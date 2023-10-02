@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:skinscan/pages/genera_reporte/genera_reporte_widget.dart';
 import 'package:skinscan/pages/registrate/registrate_widget.dart';
 
 import '../home_page/home_page_widget.dart';

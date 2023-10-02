@@ -1,3 +1,5 @@
+import 'package:skinscan/pages/genera_reporte/genera_reporte_model.dart';
+import 'package:skinscan/pages/genera_reporte/genera_reporte_widget.dart';
 import 'package:skinscan/pages/home_page/home_page_widget.dart';
 import 'package:skinscan/pages/iniciar_sesion/iniciar_sesion_widget.dart';
 

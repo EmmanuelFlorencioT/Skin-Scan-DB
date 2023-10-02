@@ -3,6 +3,7 @@ import 'package:skinscan/firebase_options.dart';
 import 'package:skinscan/index.dart';
 import 'package:skinscan/nav.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:skinscan/pages/genera_reporte/genera_reporte_widget.dart';
 import 'package:skinscan/pages/home_page/home_page_widget.dart';
 import 'package:skinscan/pages/perfil/perfil_widget.dart';
 import 'package:skinscan/pages/registrate/registrate_widget.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/home',
       routes: {
-        '/home': (context) => const HomePageWidget(),
+        '/home': (context) => const GeneraReporteWidget(),
         '/registrar': (context) => const RegistrateWidget(),
         '/iniciarSesion': (context) => const IniciarSesionWidget(),
         //'/perfil': (context) => PerfilWidget(),
