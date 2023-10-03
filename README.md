@@ -71,7 +71,7 @@
 | Programar el frontend del perfil                                         | 16/09/23                 |                      | 17/09/23              |                   | 4 horas          | Neftali Limon Ortiz, Marco Lopez Arriaga               | Pendiente   |
 | **Frontend Escanear piel**                                                          | 17/10/23                 |                      | 19/10/23              |                   | 6 horas                 |                                                        |             |
 | Diseñar la interfaz para la función de escaneo de piel                     | 17/10/23                 |                      | 17/10/23              |                   | 2 horas          | Neftali Limon Ortiz, Marco Lopez Arriaga               | Pendiente   |
-| Integrar la cámara o dispositivo de escaneo                                | 18/10/23                 |                      | 19/10/23              |                   | 2 horas          | Neftali Limon Ortiz, Marco Lopez Arriaga               | Pendiente   |
+| Integrar la cámara o dispositivo de escaneo y desarrollar el frontend del escaner                               | 17/10/23                 |                      | 19/10/23              |                   | 2 horas          | Neftali Limon Ortiz, Marco Lopez Arriaga               | Pendiente   |
 
 #### 5° Sprint Review
 
@@ -82,14 +82,14 @@
 | Desarrollar el frontend para dar de alta expedientes                                | 24/10/23                 |                      | 25/10/23              |                   | 4 horas          | Neftali Limon Ortiz, Marco Lopez Arriaga               | Pendiente   |
 | **Frontend Expedientes**                                                               | 25/10/23                 |                      | 27/10/23              |                   | 6 horas                 |                                                        |             |
 | Diseñar la interfaz de usuario para la visualización de expedientes           | 25/10/23                 |                      | 25/10/23              |                   | 2 horas          | Neftali Limon Ortiz, Marco Lopez Arriaga               | Pendiente   |
-| Desarrollo de frontend de expedientes en diferentes formato PDF              | 26/10/23                 |                      | 27/10/23              |                   | 4 horas          | Neftali Limon Ortiz, Marco Lopez Arriaga               | Pendiente   |
+| Desarrollo de frontend de expedientes               | 26/10/23                 |                      | 27/10/23              |                   | 4 horas          | Neftali Limon Ortiz, Marco Lopez Arriaga               | Pendiente   |
 | **Frontend Filtro Expedientes**                                                               | 27/10/23                 |                      | 29/10/23              |                   | 6 horas                 |                                                        |             |
 | Diseñar la interfaz de usuario para el filtro de expedientes           | 27/10/23                 |                      | 27/10/23              |                   | 2 horas          | Neftali Limon Ortiz, Marco Lopez Arriaga               | Pendiente   |
 | Desarrollar el frontend para la pantalla de filtro expedientes                                | 28/10/23                 |                      | 29/10/23   |           | 4 horas          | Neftali Limon Ortiz, Marco Lopez Arriaga               | Pendiente   |
-| **Conexión de la base de datos con la App**                                | 29/09/23                 |                      | 03/11/23              |                   | 6 horas                 |                                                        |             |
-| Crear proyecto en Firebase para la app                                     | 29/09/23                 |                      | 30/09/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara    | Pendiente   |
-| Conectar el proyecto de firebase con la app                                | 30/09/23                 |                      | 31/09/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara    | Pendiente   |
-| Hacer tests de insercion y gets a la base de de datos, a traves del codigo | 31/09/23                 |                      | 03/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara    | Pendiente   |
+| **Conexión de la base de datos con la App**                                | 29/10/23                 |                      | 03/11/23              |                   | 6 horas                 |                                                        |             |
+| Crear proyecto en Firebase para la app                                     | 29/10/23                 |                      | 30/10/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara    | Pendiente   |
+| Conectar el proyecto de firebase con la app                                | 30/10/23                 |                      | 31/10/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara    | Pendiente   |
+| Hacer tests de insercion y gets a la base de de datos, a traves del codigo | 31/10/23                 |                      | 03/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara    | Pendiente   |
 
 
 #### 6° Sprint Review
@@ -119,10 +119,10 @@
 | Mostrar resultados o análisis de la piel al usuario                        | 22/11/23                 |                      | 23/11/23              |                   | 2 horas          | Neftali Limon Ortiz, Marco Lopez Arriaga               | Pendiente   |
 | Almacenar los datos del escaneo si es necesario                            | 23/11/23                 |                      | 23/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara               | Pendiente   |
 | **Expedientes**                                                               | 24/11/23                 |                      | 26/11/23              |                   | 2 horas                 |                                                        |             |
-| Permitir la exportación de expedientes en diferentes formato PDF              | 24/11/23                 |                      | 26/11/23              |                   | 2 horas          | Neftali Limon Ortiz, Marco Lopez Arriaga               | Pendiente   |
+| Permitir la exportación de expedientes en diferentes formato PDF              | 24/11/23                 |                      | 26/11/23              |                   | 2 horas          |  Alan Axel Castro Resendiz, Isai Vicente Moreno Lara            | Pendiente   |
 | **Conexión pantalla Perfil con la Base de Datos**                                                                 | 27/11/23                 |                      | 28/11/23              |      |	2 horas	             
 | Mostrar información personal del usuario                                   | 27/11/23                 |                      | 28/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara               | Pendiente   |
-| **Modificación del perfil de usuario**                                     | 29/11/23                 |                      | 22/10/23              |                   | 4 horas                 |                                                        |             |
+| **Modificación del perfil de usuario**                                     | 29/11/23                 |                      | 01/12/23              |                   | 4 horas                 |                                                        |             |
 | Creación de función de modificación de usuario                             | 29/11/23                 |                      | 30/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara    | Pendiente   |
 | Verificación en la funcion modificacion de usuario                         | 30/11/23                 |                      | 01/12/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara    | Pendiente   |
 
@@ -133,8 +133,8 @@
 |                  |                                                        |             |
 | **Modificación de expedientes generados por el usuario**                      | 04/12/23                 |                      | 09/12/23              |                   | 2 horas                 |                                                        |             |
 | Acceso a los expedientes de un usuario determinado                            | 04/12/23                 |                      | 09/12/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara    | Pendiente   |
-| **Integración de la Base de datos con la aplicación**                      | 10/12/23                 |                      | 14/12/23              |                   | 2 horas                 |                                                        |             |
-| Integración de la Base de datos con la aplicación                            | 10/12/23                 |                      | 14/12/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara    | Pendiente   |
+| **Detalles finales Integración de la Base de datos con la aplicación**                      | 10/12/23                 |                      | 14/12/23              |                   | 2 horas                 |                                                        |             |
+| Detalles finales Integración de la Base de datos con la aplicación                            | 10/12/23                 |                      | 14/12/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara    | Pendiente   |
 
 
 
@@ -144,4 +144,3 @@
 |----------------------------------------------------------------------------|--------------------------|----------------------|-----------------------|-------------------|------------------|--------------------------------------------------------|-------------|
 | **_Backend_**                                                              | 01/09/23                 |                      | 28/11/23              |                   
 | **_Frontend_**                                                             | 06/09/23                 |                      | 30/11/23              |                   |                  |                                                        |             |
-
