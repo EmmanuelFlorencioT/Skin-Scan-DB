@@ -47,9 +47,8 @@
 | **Ajustes al Modelo Propuesto**                                            | 29/09/23                 |                      | 02/10/23              |                   | 4 horas          |                                                        |             |
 | Ajustes de los hyperparámetros del modelo                                  | 29/09/23                 |                      | 29/09/23              |                   | 2 horas          | Alan Axel Castro Resendiz                              | Pendiente   |
 | Comparación entre los distintos modelos                                    | 02/10/23                 |                      | 02/10/23              |                   | 2 horas          | Alan Axel Castro Resendiz                              | Pendiente   |
-| **Integración del Modelo en la App**                                       | 03/10/23                 |                      | 04/11/23              |                   | 2 horas          |                                                        |             |
+| **Optimización con Tensorflow Lite**                                       | 03/10/23                 |                      | 05/11/23              |                   | 5 horas          |                                                        |             |
 | Lectura de la documentación de Tensorflow Lite                             | 03/10/23                 |                      | 04/10/23              |                   | 2 horas          | Emmanuel Florencio Trujillo, Alan Axel Castro Resendiz | Pendiente   |
-**Integración del Modelo en la App**                                       | 03/10/23                 |                      | 05/11/23              |                   | 3 horas                |                                                        |             |
 | Optimización del modelo en TF Lite.                                        | 03/10/23                 |                      | 05/10/23              |                   | 3 horas          | Emmanuel Florencio Trujillo, Alan Axel Castro Resendiz | Pendiente   |
 **Frontend Landing Page**                                                           | 02/10/23                 |                      | 05/09/23              |                   | 4 horas          | Neftali Limon Ortiz, Marco Lopez Arriaga               | Pendiente   |
 | Diseñar el layout de la página de inicio                                   | 02/09/23                 |                      | 05/10/23              |                   | 2 horas          | Neftali Limon Ortiz, Marco Lopez Arriaga               | Pendiente   |
@@ -144,3 +143,5 @@
 |----------------------------------------------------------------------------|--------------------------|----------------------|-----------------------|-------------------|------------------|--------------------------------------------------------|-------------|
 | **_Backend_**                                                              | 01/09/23                 |                      | 28/11/23              |                   
 | **_Frontend_**                                                             | 06/09/23                 |                      | 30/11/23              |                   |                  |                                                        |             |
+
+
