@@ -104,14 +104,14 @@ class _HomePageWidgetState extends State<HomePageWidget>
                   children: [
                     Container(
                       width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height * 0.40,
+                      height: MediaQuery.of(context).size.height * 0.45,
                       decoration: const BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            Color(0xCBFFFFFF),
+                            Color.fromARGB(2, 255, 255, 255),
                             Colors.white,
                           ],
-                          stops: [0.0, 1.0],
+                          stops: [0.0, 0.2],
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
                         ),
