@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:skinscan/pages/camera/camera_widget.dart';
+
 import '../iniciar_sesion/iniciar_sesion_widget.dart';
 import '../registrate/registrate_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -156,7 +158,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   onPressed: () {
                                     Navigator.push(
                                       context,
-                                      MaterialPageRoute(builder: (context) => RegistrateWidget()),
+                                      MaterialPageRoute(builder: (context) => CameraWidget()),
                                     );
                                     print('Button pressed ...');
                                   },

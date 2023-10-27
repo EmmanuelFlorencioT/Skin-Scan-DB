@@ -1,13 +1,16 @@
+import 'package:skinscan/pages/perfil/perfil_widget.dart';
+
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import 'camera_model.dart';
 export 'camera_model.dart';
-
 class CameraWidget extends StatefulWidget {
   const CameraWidget({Key? key}) : super(key: key);
 
@@ -20,10 +23,13 @@ class _CameraWidgetState extends State<CameraWidget> {
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
+  int _selectedIndex = 0; // Índice del elemento de cámara
+
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => CameraModel());
+    _model = CameraModel(); // Crear una instancia de CameraModel
+    _model.initState(context); // Inicializar el modelo si es necesario
   }
 
   @override
@@ -35,6 +41,15 @@ class _CameraWidgetState extends State<CameraWidget> {
 
   @override
   Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -48,14 +63,14 @@ class _CameraWidgetState extends State<CameraWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.center, // Centra los elementos horizontalmente
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Expanded( // Ocupa todo el espacio disponible
+                  Expanded(
                     child: Padding(
                       padding: EdgeInsets.only(top: 72),
                       child: Text(
                         'Escaner',
-                        textAlign: TextAlign.center, // Centra el texto dentro del espacio ocupado
+                        textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Poppins',
                           color: Color(0xFF767676),
@@ -67,37 +82,43 @@ class _CameraWidgetState extends State<CameraWidget> {
                   ),
                 ],
               ),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(68, 20, 0, 0),
-                    child: Container(
-                      width: MediaQuery.sizeOf(context).width * 0.7,
-                      height: MediaQuery.sizeOf(context).height * 0.35,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                      ),
-                      child: Stack(   
-                        //Codigo isai
-                      ),
-                    ),
+              Center(
+                child: FractionallySizedBox(
+                  widthFactor: 0.2, // Puedes ajustar este valor según tu diseño
+                  child: Image.asset(
+                    'assets/images/Vector1.png',
+                    fit: BoxFit.contain,
+                    alignment: Alignment.center,
                   ),
-                ],
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 80, 0, 0),
-                child: Text(
-                  'Coloca la cámara en frente \nde la mancha pigmentada',
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Poppins',
-                        color: Color(0xFF767676),
-                        fontSize: 15,
-                      ),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 150, 0, 0),
+                child: FFButtonWidget(
+                  onPressed: () {
+                    print('Button pressed ...');
+                  },
+                  text: 'Tomar una imagen',
+                  options: FFButtonOptions(
+                    height: 40,
+                    padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
+                    iconPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                    color: Color(0xFF10CAC4),
+                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                      fontFamily: 'Poppins',
+                      color: Colors.white,
+                    ),
+                    elevation: 3,
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1,
+                    ),
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
                 child: FFButtonWidget(
                   onPressed: () {
                     print('Button pressed ...');
@@ -108,14 +129,15 @@ class _CameraWidgetState extends State<CameraWidget> {
                     size: 15,
                   ),
                   options: FFButtonOptions(
+                    width: 210,
                     height: 40,
                     padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
                     iconPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                     color: Color(0xFF767676),
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                          fontFamily: 'Poppins',
-                          color: Colors.white,
-                        ),
+                      fontFamily: 'Poppins',
+                      color: Colors.white,
+                    ),
                     elevation: 3,
                     borderSide: BorderSide(
                       color: Colors.transparent,
@@ -128,6 +150,36 @@ class _CameraWidgetState extends State<CameraWidget> {
             ],
           ),
         ),
+bottomNavigationBar: BottomNavigationBar(
+  items: const <BottomNavigationBarItem>[
+    BottomNavigationBarItem(
+      icon: Icon(Icons.camera_alt),
+      label: '',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.person),
+      label: '',
+    ),
+  ],
+  currentIndex: _selectedIndex, // Establecer el índice seleccionado
+  selectedItemColor: Color(0xFF10CAC4), // Cambia el color de ítem seleccionado
+  onTap: (int index) {
+    setState(() {
+      if (index == 0) {
+        // Navegar a la página de cámara actual.
+      } else if (index == 1) {
+        // Navegar a la página de perfil (PerfilWidget) o lo que desees.
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const PerfilWidget(uid: '',),
+          ),
+        );
+      }
+    });
+  },
+)
+,
       ),
     );
   }
