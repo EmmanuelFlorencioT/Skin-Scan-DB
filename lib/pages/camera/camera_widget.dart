@@ -82,16 +82,6 @@ class _CameraWidgetState extends State<CameraWidget> {
                   ),
                 ],
               ),
-              Center(
-                child: FractionallySizedBox(
-                  widthFactor: 0.2, // Puedes ajustar este valor según tu diseño
-                  child: Image.asset(
-                    'assets/images/Vector1.png',
-                    fit: BoxFit.contain,
-                    alignment: Alignment.center,
-                  ),
-                ),
-              ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 150, 0, 0),
                 child: FFButtonWidget(

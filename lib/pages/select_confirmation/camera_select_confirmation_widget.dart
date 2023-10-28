@@ -4,29 +4,33 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'camera_r_b_model.dart';
-export 'camera_r_b_model.dart';
 
-class CameraRBWidget extends StatefulWidget {
-  const CameraRBWidget({Key? key}) : super(key: key);
+import 'camera_select_confirmation_model.dart';
+export 'camera_select_confirmation_model.dart';
+
+class CameraSelectConfirmationWidget extends StatefulWidget {
+  const CameraSelectConfirmationWidget({Key? key}) : super(key: key);
 
   @override
-  _CameraRBWidgetState createState() => _CameraRBWidgetState();
+  _CameraSelectConfirmationWidgetState createState() =>
+      _CameraSelectConfirmationWidgetState();
 }
 
-class _CameraRBWidgetState extends State<CameraRBWidget> {
-  late CameraRBModel _model;
+class _CameraSelectConfirmationWidgetState
+    extends State<CameraSelectConfirmationWidget> {
+  late CameraSelectConfirmationModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  int _selectedIndex = 0;
+  int _selectedIndex = 0; 
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => CameraRBModel());
+    _model = createModel(context, () => CameraSelectConfirmationModel());
   }
 
   @override
@@ -38,6 +42,15 @@ class _CameraRBWidgetState extends State<CameraRBWidget> {
 
   @override
   Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -50,7 +63,7 @@ class _CameraRBWidgetState extends State<CameraRBWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Row(
+               Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Expanded(
@@ -70,50 +83,54 @@ class _CameraRBWidgetState extends State<CameraRBWidget> {
                   ),
                 ],
               ),
-
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 80.0, 0.0, 0.0),
-                child: Text(
-                  'Dañino',
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Poppins',
-                        color: Color(0xFFEA2A2A),
-                        fontSize: 30.0,
-                      ),
-                ),
-              ),
-              Text(
-                'Melanoma (90%)',
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Readex Pro',
-                      color: Color(0xFF767676),
-                      fontSize: 20.0,
-                    ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 150, 0, 0),
                 child: FFButtonWidget(
                   onPressed: () {
                     print('Button pressed ...');
                   },
-                  text: 'Escanear otra vez',
+                  text: 'Confirmar Selección',
                   options: FFButtonOptions(
-                    height: 40.0,
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                    iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    height: 40,
+                    padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
+                    iconPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                     color: Color(0xFF10CAC4),
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Poppins',
                           color: Colors.white,
                         ),
-                    elevation: 3.0,
+                    elevation: 3,
                     borderSide: BorderSide(
                       color: Colors.transparent,
-                      width: 1.0,
+                      width: 1,
                     ),
-                    borderRadius: BorderRadius.circular(50.0),
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
+                child: FFButtonWidget(
+                  onPressed: () {
+                    print('Button pressed ...');
+                  },
+                  text: 'Seleccionar otra imagen',
+                  options: FFButtonOptions(
+                    width: 210,
+                    height: 40,
+                    padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
+                    iconPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                    color: Color(0xFFF1F4F8),
+                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                          fontFamily: 'Readex Pro',
+                          color: Color(0xFF7F7F7F),
+                        ),
+                    elevation: 3,
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1,
+                    ),
+                    borderRadius: BorderRadius.circular(50),
                   ),
                 ),
               ),
@@ -149,6 +166,7 @@ class _CameraRBWidgetState extends State<CameraRBWidget> {
     });
   },
 )
+,
       ),
     );
   }
