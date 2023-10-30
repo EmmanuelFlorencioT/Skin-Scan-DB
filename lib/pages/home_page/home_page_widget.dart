@@ -161,9 +161,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   onPressed: () {
                                     Navigator.push(
                                       context,
-                                      MaterialPageRoute(builder: (context) => CameraCaptureConfirmationWidget()),
+                                      // MaterialPageRoute(builder: (context) => CameraCaptureConfirmationWidget()),
+                                      MaterialPageRoute(builder: (context) => RegistrateWidget()),
                                     );
-                                    print('Button pressed ...');
+                                    // print('Button pressed ...');
                                   },
                                   text: 'Registrarse',
                                   options: FFButtonOptions(

@@ -1,3 +1,4 @@
+import 'package:skinscan/pages/camera/camera_widget.dart';
 import 'package:skinscan/pages/perfil/perfil_widget.dart';
 
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -94,7 +95,11 @@ class _CameraRBWidgetState extends State<CameraRBWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
                 child: FFButtonWidget(
                   onPressed: () {
-                    print('Button pressed ...');
+                    // print('Button pressed ...');
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CameraWidget()),
+                  );
                   },
                   text: 'Escanear otra vez',
                   options: FFButtonOptions(

@@ -1,3 +1,4 @@
+import 'package:skinscan/index.dart';
 import 'package:skinscan/pages/perfil/perfil_widget.dart';
 
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -87,7 +88,12 @@ class _CameraCaptureConfirmationWidgetState
                 padding: EdgeInsetsDirectional.fromSTEB(0, 150, 0, 0),
                 child: FFButtonWidget(
                   onPressed: () {
-                    print('Button pressed ...');
+                    // print('Button pressed ...');
+                    Navigator.push(
+                    context,
+                    // MaterialPageRoute(builder: (context) => CameraRBWidget()),
+                    MaterialPageRoute(builder: (context) => CameraRGWidget()),
+                  );
                   },
                   text: 'Confirmar Captura',
                   options: FFButtonOptions(
@@ -112,7 +118,11 @@ class _CameraCaptureConfirmationWidgetState
                 padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
                 child: FFButtonWidget(
                   onPressed: () {
-                    print('Button pressed ...');
+                    // print('Button pressed ...');
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CameraWidget()),
+                  );
                   },
                   text: 'Volver a capturar imagen',
                   options: FFButtonOptions(

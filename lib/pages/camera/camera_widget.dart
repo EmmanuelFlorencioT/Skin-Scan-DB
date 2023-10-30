@@ -1,3 +1,4 @@
+import 'package:skinscan/pages/camera_confirmation/camera_capture_confirmation_widget.dart';
 import 'package:skinscan/pages/perfil/perfil_widget.dart';
 
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -86,7 +87,11 @@ class _CameraWidgetState extends State<CameraWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0, 150, 0, 0),
                 child: FFButtonWidget(
                   onPressed: () {
-                    print('Button pressed ...');
+                    // print('Button pressed ...');
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CameraCaptureConfirmationWidget()),
+                  );
                   },
                   text: 'Tomar una imagen',
                   options: FFButtonOptions(
