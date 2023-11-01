@@ -90,27 +90,27 @@
 | Hacer tests de insercion y gets a la base de de datos, a traves del codigo            | 27/10/23                 |                      | 27/10/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara               | Pendiente   |
 | Implementar gets de datos del usuario para el inicio de sesión                                | 28/10/23                 |                      | 29/10/23   |           | 4 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara               | Pendiente   |
 | **Validaciones inicio de sesión y registro**                                | 29/10/23                 |                      | 03/11/23              |                   | 6 horas                 |                                                        |             |
-| Diseñar la interfaz de usuario para la visualización de expedientes                                     | 29/10/23                 |                      | 30/10/23              |                   | 2 horas          | Neftali Limon Ortiz, Marco Lopez Arriaga    | Pendiente   |
-| Desarrollo de frontend de expedientes                                | 30/10/23                 |                      | 31/10/23              |                   | 2 horas          | Neftali Limon Ortiz, Marco Lopez Arriaga    | Pendiente   |
-| **Implementar cámara en el proyecto principal**                                | 29/10/23                 |                      | 03/11/23              |                   | 6 horas                 |                                                        |             |
-| Implementar cámara en el proyecto principal | 30/10/23                 |                      | 02/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz    | Pendiente   |
+| Diseñar la interfaz de usuario para la visualización de expedientes                                     | 29/10/23                 |                      | 30/10/23              |                   | 2 horas          | Neftali Limon Ortiz, Marco Lopez Arriaga    | En proceso   |
+| Desarrollo de frontend de expedientes                                | 30/10/23                 |                      | 31/10/23              |                   | 2 horas          | Neftali Limon Ortiz, Marco Lopez Arriaga    | En proceso   |
+| **Implementar cámara en el proyecto principal**                                | 29/10/23                 |                      | 03/11/23              |                   | 2 horas                 |                                                        |             |
+| Implementar cámara en el proyecto principal | 30/10/23                 |                      | 02/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz    | En proceso   |
 
 #### 6° Sprint Review
 
 |                                                                            | Fecha de Inicio Estimada | Fecha de Inicio Real | Fecha de Fin Estimada | Fecha de Fin Real | Duración (horas) | Responsables                                           | Status      |
 |----------------------------------------------------------------------------|--------------------------|----------------------|-----------------------|-------------------|------------------|--------------------------------------------------------|-------------|
-| **Altas y bajas en la base de datos**                                      | 06/11/23                 |                      | 09/11/23              |                   | 8 horas                 |                                                        |             |
-| Crear la table del usuario en la base de datos                             | 06/11/23                 |                      | 07/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara    | Pendiente   |
-| Manejo de almacenamiento para carga de imágenes                            | 07/11/23                 |                      | 08/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara    | Pendiente   |
-| Creación de funciones de alta y baja de usuarios                           | 08/11/23                 |                      | 09/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara    | Pendiente   |
-| Testing de las funciones de alta y baja de usuarios                        | 09/11/23                 |                      | 09/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara    | Pendiente   |
-| **Formulario de registro en la base de datos**                                     | 10/11/23                 |                      | 13/11/23              |                   | 6 horas                 |                                                        |             |
-| Validar y verificar la información del usuario                             | 10/11/23                 |                      | 10/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara               | Pendiente   |
-| Implementar la autenticación de correo electrónico                         | 11/11/23                 |                      | 12/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara               | Pendiente   |
-| Almacenar los datos de registro en una base de datos                       | 12/11/23                 |                      | 13/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara               | Pendiente   |
-| **Formulario de Inicio de Sesión** 					    | 14/11/23	|	| 16/11/23	|	| 4 horas                 |                                                        |             |
-| Implementar la autenticación de usuario                                    | 14/11/23                 |                      | 15/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara               | Pendiente   |
-| Validar las credenciales del usuario                                       | 15/11/23                 |                      | 16/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara               | Pendiente   |
+| **Dataset**                                      | 06/11/23                 |                      | 07/11/23              |                   | 4 horas                 |                                                        |             |
+| Generación de nuevas imágenes                             | 06/11/23                 |                      | 06/11/23              |                   | 2 horas          | Emmanuel Florencio Trujillo, Isai Vicente Moreno Lara    | Pendiente   |
+| Balanceo del dataset                            | 07/11/23                 |                      | 07/11/23              |                   | 2 horas          | Emmanuel Florencio Trujillo, Isai Vicente Moreno Lara    | Pendiente   |
+| **Iteración del modelo de IA**                                     | 10/11/23                 |                      | 14/11/23              |                   | 8 horas                 |                                                        |             |
+| Re entrenamiento del modelo                             | 10/11/23                 |                      | 10/11/23              |                   | 2 horas          | Emmanuel Florencio Trujillo, Isai Vicente Moreno Lara               | Pendiente   |
+| Medición de la precisión del modelo                         | 11/11/23                 |                      | 12/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Emmanuel Florencio Trujillo               | Pendiente   |
+| Generación de un expediente de clasificación                       | 12/11/23                 |                      | 13/11/23              |                   | 2 horas          | Emmanuel Florencio Trujillo, Isai Vicente Moreno Lara               | Pendiente   |
+| Análisis de la matriz de confusión                        | 13/11/23                 |                      | 14/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Emmanuel Florencio Trujillo               | Pendiente   |
+| **Reporte de investigación**                                     | 10/11/23                 |                      | 14/11/23              |                   | 8 horas                 |                                                        |             |
+| Generación de cuenta colaborativa en overleaf                             | 10/11/23                 |                      | 10/11/23              |                   | 2 horas          | Emmanuel Florencio Trujillo, Isai Vicente Moreno Lara,                | Pendiente   |
+| Establecer investigaciones anteriores en un reporte en latex                         | 11/11/23                 |                      | 12/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Emmanuel Florencio, Neftali Limon Ortiz, Marco Lopez Arriaga Trujillo, Isai Vicente Moreno               | Pendiente   |
+
 
 #### 7° Sprint Review
 
@@ -129,16 +129,6 @@
 | Creación de función de modificación de usuario                             | 29/11/23                 |                      | 30/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara    | Pendiente   |
 | Verificación en la funcion modificacion de usuario                         | 30/11/23                 |                      | 01/12/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara    | Pendiente   |
 
-#### 8° Sprint Review
-
-|                                                                            | Fecha de Inicio Estimada | Fecha de Inicio Real | Fecha de Fin Estimada | Fecha de Fin Real | Duración (horas) | Responsables                                           | Status      |
-|----------------------------------------------------------------------------|--------------------------|----------------------|-----------------------|-------------------|------------------|--------------------------------------------------------|-------------|
-|                  |                                                        |             |
-| **Modificación de expedientes generados por el usuario**                      | 04/12/23                 |                      | 09/12/23              |                   | 2 horas                 |                                                        |             |
-| Acceso a los expedientes de un usuario determinado                            | 04/12/23                 |                      | 09/12/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara    | Pendiente   |
-| **Detalles finales Integración de la Base de datos con la aplicación**                      | 10/12/23                 |                      | 14/12/23              |                   | 2 horas                 |                                                        |             |
-| Detalles finales Integración de la Base de datos con la aplicación                            | 10/12/23                 |                      | 14/12/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara    | Pendiente   |
-
 
 
 #### Sprint Review
@@ -147,4 +137,3 @@
 |----------------------------------------------------------------------------|--------------------------|----------------------|-----------------------|-------------------|------------------|--------------------------------------------------------|-------------|
 | **_Backend_**                                                              | 01/09/23                 |                      | 28/11/23              |                   
 | **_Frontend_**                                                             | 06/09/23                 |                      | 30/11/23              |                   |                  |                                                        |             |
-
