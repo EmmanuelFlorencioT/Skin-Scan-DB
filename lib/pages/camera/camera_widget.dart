@@ -332,7 +332,7 @@ Widget getImageWidget() {
                     return Center(
                       child: Container(
               width: MediaQuery.of(context).size.height*0.8,
-              height: 440,
+              height: MediaQuery.of(context).size.height*0.6,
               child:CameraPreview(_controller,child:                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(75, 380, 75, 25),
                   child: FFButtonWidget(
@@ -345,8 +345,8 @@ Widget getImageWidget() {
                     },
                     text: 'Toma imagen',
                     options: FFButtonOptions(
-                      height: 10,
-                      width: 100,
+                      height:40,
+                      width: 50,
                       padding: EdgeInsetsDirectional.fromSTEB(6, 0, 6, 0),
                       iconPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                       color: Color(0xFF10CAC4),
