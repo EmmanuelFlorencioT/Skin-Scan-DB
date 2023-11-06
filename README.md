@@ -89,9 +89,6 @@
 | **Inserción y gets de base de datos**                                                               | 27/10/23                 |                      | 29/10/23              |                   | 6 horas                 |                                                        |             |
 | Hacer tests de insercion y gets a la base de de datos, a traves del codigo            | 27/10/23                 |                      | 27/10/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara               | Pendiente   |
 | Implementar gets de datos del usuario para el inicio de sesión                                | 28/10/23                 |                      | 29/10/23   |           | 4 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara               | Pendiente   |
-| **Validaciones inicio de sesión y registro**                                | 29/10/23                 |                      | 03/11/23              |                   | 6 horas                 |                                                        |             |
-| Diseñar la interfaz de usuario para la visualización de expedientes                                     | 29/10/23                 |                      | 30/10/23              |                   | 2 horas          | Neftali Limon Ortiz, Marco Lopez Arriaga    | En proceso   |
-| Desarrollo de frontend de expedientes                                | 30/10/23                 |                      | 31/10/23              |                   | 2 horas          | Neftali Limon Ortiz, Marco Lopez Arriaga    | En proceso   |
 | **Implementar cámara en el proyecto principal**                                | 29/10/23                 |                      | 03/11/23              |                   | 2 horas                 |                                                        |             |
 | Implementar cámara en el proyecto principal | 30/10/23                 |                      | 02/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz    | En proceso   |
 
@@ -138,3 +135,4 @@
 |----------------------------------------------------------------------------|--------------------------|----------------------|-----------------------|-------------------|------------------|--------------------------------------------------------|-------------|
 | **_Backend_**                                                              | 01/09/23                 |                      | 28/11/23              |                   
 | **_Frontend_**                                                             | 06/09/23                 |                      | 30/11/23              |                   |                  |                                                        |             |
+
