@@ -11,7 +11,8 @@ import 'camera_r_g_model.dart';
 export 'camera_r_g_model.dart';
 
 class CameraRGWidget extends StatefulWidget {
-  const CameraRGWidget({Key? key}) : super(key: key);
+  final String uid;
+  const CameraRGWidget({required this.uid, Key? key}) : super(key: key);
 
   @override
   _CameraRGWidgetState createState() => _CameraRGWidgetState();
@@ -99,7 +100,7 @@ class _CameraRGWidgetState extends State<CameraRGWidget> {
                     // print('Button pressed ...');
                     Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => CameraWidget()),
+                    MaterialPageRoute(builder: (context) => CameraWidget(uid: widget.uid)),
                   );
                   },
                   text: 'Escanear otra vez',
@@ -148,7 +149,7 @@ class _CameraRGWidgetState extends State<CameraRGWidget> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const PerfilWidget(uid: '',),
+            builder: (context) => PerfilWidget(uid: widget.uid,),
           ),
         );
       }

@@ -1,6 +1,18 @@
+import 'package:camera/camera.dart';
 import 'package:skinscan/index.dart';
 import 'package:skinscan/pages/perfil/perfil_widget.dart';
+import 'dart:io';
 
+import 'package:flutter/material.dart';
+import 'package:camera/camera.dart';
+import 'package:skinscan/index.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:path/path.dart' show join;
+import 'package:universal_platform/universal_platform.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -13,8 +25,9 @@ import 'camera_capture_confirmation_model.dart';
 export 'camera_capture_confirmation_model.dart';
 
 class CameraCaptureConfirmationWidget extends StatefulWidget {
-  const CameraCaptureConfirmationWidget({Key? key}) : super(key: key);
-
+  final XFile? Xfile;
+  final String uid;
+  const CameraCaptureConfirmationWidget({required this.Xfile,required this.uid ,Key? key}) : super(key: key);
   @override
   _CameraCaptureConfirmationWidgetState createState() =>
       _CameraCaptureConfirmationWidgetState();
@@ -23,9 +36,8 @@ class CameraCaptureConfirmationWidget extends StatefulWidget {
 class _CameraCaptureConfirmationWidgetState
     extends State<CameraCaptureConfirmationWidget> {
   late CameraCaptureConfirmationModel _model;
-
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
+  bool kIsWeb = const bool.fromEnvironment('dart.library.js_util');
   int _selectedIndex = 0; 
 
   @override
@@ -43,6 +55,7 @@ class _CameraCaptureConfirmationWidgetState
 
   @override
   Widget build(BuildContext context) {
+    XFile? _imageFile = widget.Xfile;
     if (isiOS) {
       SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(
@@ -51,6 +64,22 @@ class _CameraCaptureConfirmationWidgetState
         ),
       );
     }
+@override
+Widget getImageWidget() {
+  if (_imageFile != null) {
+    if (kIsWeb) {
+      return Image.network(_imageFile!.path,
+                fit: BoxFit.cover);
+    } else {
+      return Image.file(File(_imageFile!.path),
+                fit: BoxFit.cover,);
+    }
+  } else {
+    //return CameraPreview(_controller);
+    return Container();
+  }
+}
+
 
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
@@ -63,7 +92,7 @@ class _CameraCaptureConfirmationWidgetState
           top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
-            children: [
+            children: [              
                Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -85,14 +114,27 @@ class _CameraCaptureConfirmationWidgetState
                 ],
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 150, 0, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
+                child: Center(
+                  child: Container(
+                    alignment: Alignment.center,
+                    width: double.infinity,
+                    height: 280,
+                    child: getImageWidget(),
+                  ), 
+                  ),
+                
+                
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 25, 0, 0),
                 child: FFButtonWidget(
                   onPressed: () {
                     // print('Button pressed ...');
                     Navigator.push(
                     context,
                     // MaterialPageRoute(builder: (context) => CameraRBWidget()),
-                    MaterialPageRoute(builder: (context) => CameraRGWidget()),
+                    MaterialPageRoute(builder: (context) => CameraRGWidget(uid: widget.uid,)),
                   );
                   },
                   text: 'Confirmar Captura',
@@ -121,7 +163,7 @@ class _CameraCaptureConfirmationWidgetState
                     // print('Button pressed ...');
                     Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => CameraWidget()),
+                    MaterialPageRoute(builder: (context) => CameraWidget(uid: widget.uid,)),
                   );
                   },
                   text: 'Volver a capturar imagen',
@@ -169,7 +211,7 @@ class _CameraCaptureConfirmationWidgetState
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const PerfilWidget(uid: '',),
+            builder: (context) => PerfilWidget(uid: widget.uid,),
           ),
         );
       }
