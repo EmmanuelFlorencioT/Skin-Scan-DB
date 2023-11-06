@@ -99,6 +99,9 @@
 
 |                                                                            | Fecha de Inicio Estimada | Fecha de Inicio Real | Fecha de Fin Estimada | Fecha de Fin Real | Duración (horas) | Responsables                                           | Status      |
 |----------------------------------------------------------------------------|--------------------------|----------------------|-----------------------|-------------------|------------------|--------------------------------------------------------|-------------|
+| **frontend y backend**                                      | 06/11/23                 |                      | 07/11/23              |                   | 4 horas                 |                                                        |             |
+| Añadir Botón Tomar fotografía                             | 06/11/23                 |                      | 06/11/23              |                   | 2 horas          | Marco Antonio López Arriaga, Neftalí Limon Ortiz    | Pendiente   |
+| Implementar cargar fotografía desde galería en el proyecto principal                            | 07/11/23                 |                      | 07/11/23              |                   | 2 horas          | Alan Castro Resendiz, Isai Vicente Moreno Lara    | Pendiente   |
 | **Dataset**                                      | 06/11/23                 |                      | 07/11/23              |                   | 4 horas                 |                                                        |             |
 | Generación de nuevas imágenes                             | 06/11/23                 |                      | 06/11/23              |                   | 2 horas          | Emmanuel Florencio Trujillo, Isai Vicente Moreno Lara    | Pendiente   |
 | Balanceo del dataset                            | 07/11/23                 |                      | 07/11/23              |                   | 2 horas          | Emmanuel Florencio Trujillo, Isai Vicente Moreno Lara    | Pendiente   |
@@ -135,4 +138,3 @@
 |----------------------------------------------------------------------------|--------------------------|----------------------|-----------------------|-------------------|------------------|--------------------------------------------------------|-------------|
 | **_Backend_**                                                              | 01/09/23                 |                      | 28/11/23              |                   
 | **_Frontend_**                                                             | 06/09/23                 |                      | 30/11/23              |                   |                  |                                                        |             |
-
