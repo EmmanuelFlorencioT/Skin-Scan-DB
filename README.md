@@ -108,6 +108,7 @@
 | Generación de cuenta colaborativa en overleaf                             | 12/11/23                 |                      | 13/11/23              |                   | 2 horas          | Emmanuel Florencio Trujillo, Isai Vicente Moreno Lara,                | Completada   |
 | Establecer investigaciones anteriores en un reporte en latex                         | 14/11/23                 |                      | 15/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Emmanuel Florencio, Neftali Limon Ortiz, Marco Lopez Arriaga Trujillo, Isai Vicente Moreno               | Completada   |
 | Analizar modelos de investigaciónes anteriores                         | 14/11/23                 |                      | 15/11/23              |                   | 2 horas          | Neftali Limon Ortiz, Marco Lopez Arriaga Trujillo, Isai Vicente Moreno               | Completada   |
+| Añadir análisis de los modelos de seis investigaciónes previas                         | 14/11/23                 |                      | 15/11/23              |                   | 2 horas          | Neftali Limon Ortiz, Marco Lopez Arriaga Trujillo, Isai Vicente Moreno               | Completada   |
 
 
 #### 7° Sprint Review
