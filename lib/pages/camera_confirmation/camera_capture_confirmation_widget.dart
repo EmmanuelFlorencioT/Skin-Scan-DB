@@ -25,26 +25,39 @@ import 'package:provider/provider.dart';
 import 'camera_capture_confirmation_model.dart';
 export 'camera_capture_confirmation_model.dart';
 import 'package:skinscan/pages/SpotDetector.dart';
+
+typedef UpdateImageFile = void Function(XFile? newImage);
+
 class CameraCaptureConfirmationWidget extends StatefulWidget {
   final XFile? Xfile;
   final String uid;
-  const CameraCaptureConfirmationWidget({required this.Xfile,required this.uid ,Key? key}) : super(key: key);
+  final UpdateImageFile? updateImageFile;
+  const CameraCaptureConfirmationWidget({
+    required this.Xfile,
+    required this.uid,
+    this.updateImageFile,
+    Key? key,
+  }) : super(key: key);
+  
   @override
   _CameraCaptureConfirmationWidgetState createState() =>
       _CameraCaptureConfirmationWidgetState();
 }
 
 class _CameraCaptureConfirmationWidgetState
-    extends State<CameraCaptureConfirmationWidget> {
+       extends State<CameraCaptureConfirmationWidget> {
   late CameraCaptureConfirmationModel _model;
   final scaffoldKey = GlobalKey<ScaffoldState>();
   bool kIsWeb = const bool.fromEnvironment('dart.library.js_util');
-  int _selectedIndex = 0; 
+  int _selectedIndex = 0;
+  XFile? _imageFile;
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => CameraCaptureConfirmationModel());
+    _imageFile = widget.Xfile;
+    widget.updateImageFile?.call(_imageFile);
   }
 
   @override
@@ -167,6 +180,7 @@ Widget getImageWidget() {
                     MaterialPageRoute(builder: (context) => CameraWidget(uid: widget.uid,)),
                   );
                   },
+
                   text: 'Volver a capturar imagen',
                   options: FFButtonOptions(
                     width: 210,

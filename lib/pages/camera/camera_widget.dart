@@ -116,7 +116,7 @@ Future<void> saveImageLocally(XFile imageFile) async {
   // Ahora, la imagen se ha guardado localmente en el directorio temporal.
   // Puedes acceder a imagePath para usar la ubicación de la imagen guardada.
 }
-Future<void> pickImage() async{
+Future<void> pickImage() async {
   final picker = ImagePicker();
   try {
     final pickedFiles = await picker.pickMultiImage();
@@ -132,32 +132,22 @@ Future<void> pickImage() async{
     print('Error al seleccionar imágenes: $e');
   }
 }
- Future<void> _takePicture() async {
-    if (!_controller.value.isInitialized) {
-      return;
-    }
 
-    try {
-      final XFile imageFile = await _controller.takePicture();
-      setState(() {
-        _imageFile = imageFile;
-      });
-// Obtén el directorio de documentos de la aplicación
-      final appDocDir = await getApplicationDocumentsDirectory();
-
-      // Construye la ruta donde la imagen se guardará
-      final imagePath = '${appDocDir.path}/snapshot.png';
-
-      // Guarda la imagen en la ubicación deseada
-      File(imageFile.path).copy(imagePath);
-
-      setState(() {
-        _imageFile = XFile(imagePath);
-      });
-    } catch (e) {
-      print("Error capturing the image: $e");
-    }
+Future<void> _takePicture() async {
+  if (!_controller.value.isInitialized) {
+    return;
   }
+
+  try {
+    final XFile imageFile = await _controller.takePicture();
+    setState(() {
+      _imageFile = imageFile;
+    });
+  } catch (e) {
+    print("Error al capturar la imagen: $e");
+  }
+}
+
 Widget getPickFileWidget(){
   if (_imageFile == null) {
     if (kIsWeb) {
@@ -174,19 +164,14 @@ Widget getPickFileWidget(){
 
 Widget getImageWidget() {
   if (_imageFile != null) {
-    if (kIsWeb) {
-      return Image.network(_imageFile!.path,
-                fit: BoxFit.cover,);
-    } else {
-      return Image.file(File(_imageFile!.path),
-                fit: BoxFit.cover,);
-    }
+    return Image.file(
+      File(_imageFile!.path),
+      fit: BoxFit.cover,
+    );
   } else {
     return CameraPreview(_controller);
   }
 }
-
-
 
   @override
   void dispose() {
@@ -206,7 +191,7 @@ Widget getImageWidget() {
       );
     }
     final screenWidth = MediaQuery.of(context).size.width;
-  final screenHeight = MediaQuery.of(context).size.height;
+    final screenHeight = MediaQuery.of(context).size.height;
 
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
@@ -220,6 +205,8 @@ Widget getImageWidget() {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
+               // Flexible CameraPreview
+              
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -333,27 +320,31 @@ Widget getImageWidget() {
                     {
                     return Center(
                       child: Container(
-              width: MediaQuery.of(context).size.height*0.8,
-              // height: MediaQuery.of(context).size.height*0.6,
-              height: MediaQuery.of(context).size.height*0.8,
-              child:CameraPreview(_controller,child:                 Padding(
+              // width: MediaQuery.of(context).size.height*0.8,
+              // height: MediaQuery.of(context).size.height*0.8,
+              width: screenWidth, // Ancho completo de la pantalla
+              height: screenHeight * 0.8,
+              child:CameraPreview(_controller,child:                 
+              Padding(
                   // padding: EdgeInsetsDirectional.fromSTEB(75, 380, 75, 25),
                   // padding: EdgeInsetsDirectional.fromSTEB(75, 80, 75, 50),
                   padding: EdgeInsetsDirectional.fromSTEB(
-  screenWidth * 0.10, // Ejemplo: 10% del ancho de la pantalla para 'left'
-  screenHeight * 0.70, // Ejemplo: 20% del alto de la pantalla para 'top'
-  screenWidth * 0.10, // Ejemplo: 10% del ancho de la pantalla para 'right'
-  screenHeight * 0.05, // Ejemplo: 5% del alto de la pantalla para 'bottom'
-),
+                    screenWidth * 0.10, 
+                    screenHeight * 0.70,
+                    screenWidth * 0.10, 
+                    screenHeight * 0.05, 
+                  ),
 
                   child: FFButtonWidget(
-                    onPressed: () async {
-                      await _takePicture();
-                      Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => CameraCaptureConfirmationWidget(Xfile: _imageFile,uid: widget.uid)),
-                    );
-                    },
+onPressed: () async {
+  await _takePicture();
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => CameraCaptureConfirmationWidget(Xfile: _imageFile, uid: widget.uid),
+    ),
+  );
+},
                     text: 'Toma imagen',
                     options: FFButtonOptions(
                       height:40,
