@@ -1,7 +1,7 @@
-0 akiec
-1 bcc
-2 bkl
-3 df
-4 mel
-5 nv
-6 vasc
+0 nv
+1 bkl
+2 mel
+3 bcc
+4 vasc
+5 df
+6 akiec

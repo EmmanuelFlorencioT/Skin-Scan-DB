@@ -205,6 +205,8 @@ Widget getImageWidget() {
         ),
       );
     }
+    final screenWidth = MediaQuery.of(context).size.width;
+  final screenHeight = MediaQuery.of(context).size.height;
 
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
@@ -276,7 +278,7 @@ Widget getImageWidget() {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
                   child: FFButtonWidget(
-                    onPressed: ()async {
+                   onPressed: ()async {
                       await pickImage();
                       if(_imageFile!=null){
                       Navigator.push(
@@ -332,9 +334,18 @@ Widget getImageWidget() {
                     return Center(
                       child: Container(
               width: MediaQuery.of(context).size.height*0.8,
-              height: MediaQuery.of(context).size.height*0.6,
+              // height: MediaQuery.of(context).size.height*0.6,
+              height: MediaQuery.of(context).size.height*0.8,
               child:CameraPreview(_controller,child:                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(75, 380, 75, 25),
+                  // padding: EdgeInsetsDirectional.fromSTEB(75, 380, 75, 25),
+                  // padding: EdgeInsetsDirectional.fromSTEB(75, 80, 75, 50),
+                  padding: EdgeInsetsDirectional.fromSTEB(
+  screenWidth * 0.10, // Ejemplo: 10% del ancho de la pantalla para 'left'
+  screenHeight * 0.70, // Ejemplo: 20% del alto de la pantalla para 'top'
+  screenWidth * 0.10, // Ejemplo: 10% del ancho de la pantalla para 'right'
+  screenHeight * 0.05, // Ejemplo: 5% del alto de la pantalla para 'bottom'
+),
+
                   child: FFButtonWidget(
                     onPressed: () async {
                       await _takePicture();
@@ -346,6 +357,7 @@ Widget getImageWidget() {
                     text: 'Toma imagen',
                     options: FFButtonOptions(
                       height:40,
+                      // height:20,
                       width: 50,
                       padding: EdgeInsetsDirectional.fromSTEB(6, 0, 6, 0),
                       iconPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
