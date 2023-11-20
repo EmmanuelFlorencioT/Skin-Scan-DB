@@ -1,12 +1,15 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'camera_r_g_widget.dart' show CameraRGWidget;
+import 'camera_select_confirmation_widget.dart'
+    show CameraSelectConfirmationWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class CameraRGModel extends FlutterFlowModel {
+class CameraSelectConfirmationModel
+    extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

@@ -3,23 +3,31 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'camera_widget.dart' show CameraWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:camera/camera.dart';
+
+class FlutterFlowModel<T> {
+  // Puedes definir propiedades y métodos aquí según tus necesidades.
+}
 
 class CameraModel extends FlutterFlowModel<CameraWidget> {
-  ///  State fields for stateful widgets in this page.
-
+  // Definiciones de campos y métodos específicos para CameraModel.
+  // Por ejemplo, puedes definir campos como unfocusNode y métodos como initState y dispose aquí.
   final unfocusNode = FocusNode();
+  bool isDataUploading = false;
+  FFUploadedFile uploadedLocalFile =
+  FFUploadedFile(bytes: Uint8List.fromList([]));
 
-  /// Initialization and disposal methods.
-
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    // Lógica de inicialización
+  }
 
   void dispose() {
+    // Lógica de disposición
     unfocusNode.dispose();
   }
 
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
+  // Puedes agregar más campos y métodos según sea necesario.
 }

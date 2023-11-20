@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:skinscan/pages/camera/camera_widget.dart';
 
 import '../reporte/reporte_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -28,7 +29,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
   late PerfilModel _model;
   late String nombre;
   late String cedula;
-  int _selectedIndex = 2; // Índice del elemento de perfil
+  int _selectedIndex = 1; // Índice del elemento de perfil
   bool isLoading = true;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -70,57 +71,54 @@ class _PerfilWidgetState extends State<PerfilWidget> {
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    if (isLoading) {
-      return const Scaffold(
-        body: Center(
-          child: Padding(
-            padding: EdgeInsets.all(20.0),
-            child: CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF10CAC4)),
-              semanticsLabel: 'Circular progress indicator',
-            ),
+@override
+Widget build(BuildContext context) {
+  if (isLoading) {
+    return const Scaffold(
+      body: Center(
+        child: Padding(
+          padding: EdgeInsets.all(20.0),
+          child: CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF10CAC4)),
+            semanticsLabel: 'Circular progress indicator',
           ),
         ),
-      );
-    } else {
-      return GestureDetector(
-        onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
-        child: Scaffold(
-          key: scaffoldKey,
-          backgroundColor: Colors.white,
-          /*appBar: AppBar(
-            backgroundColor: Colors.white,
-            automaticallyImplyLeading: false,
-            leading: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 0.0, 0.0),
-              child: FlutterFlowIconButton(
-                borderColor: Colors.transparent,
-                borderRadius: 30.0,
-                borderWidth: 1.0,
-                buttonSize: 60.0,
-                icon: Icon(
-                  Icons.arrow_back_ios,
-                  color: Colors.black,
-                  size: 30.0,
-                ),
-                onPressed: () async {
-                  context.pushNamed('HomePage');
-                },
-              ),
+      ),
+    );
+  } else {
+    return Scaffold(
+      key: scaffoldKey,
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        automaticallyImplyLeading: false,
+        leading: Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 0.0, 0.0),
+          child: FlutterFlowIconButton(
+            borderColor: Colors.transparent,
+            borderRadius: 30.0,
+            borderWidth: 1.0,
+            buttonSize: 60.0,
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: Colors.black,
+              size: 30.0,
             ),
-            actions: [],
-            centerTitle: true,
-            elevation: 2.0,
-          ),*/
-          body: SafeArea(
-              top: true,
-              child: Scaffold(
-                body: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+            onPressed: () async {
+              context.pushNamed('HomePage');
+            },
+          ),
+        ),
+        actions: [],
+        centerTitle: true,
+        elevation: 2.0,
+      ),
+      body: SafeArea(
+        top: true,
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
                     Expanded(
                       child: ListView(
                         padding: EdgeInsets.zero,
@@ -377,51 +375,48 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                         ],
                       ),
                     )
-                  ],
-                ),
-              )),
-          bottomNavigationBar: BottomNavigationBar(
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: '',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.camera_alt),
-                label: '',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                label: '',
-              ),
-            ],
-            currentIndex: _selectedIndex, // Establecer el índice seleccionado
-            selectedItemColor: const Color.fromRGBO(16, 202, 196, 1),
-            onTap: (int index) {
-              setState(() {
-                _selectedIndex = index;
-                if (index == 0) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ReporteWidget(
-                              uid: widget.uid,
-                            )),
-                  );
-                } else if (index == 2) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => PerfilWidget(
-                              uid: widget.uid,
-                            )),
-                  );
-                }
-              });
-            },
-          ),
+
+          ],
         ),
-      );
-    }
+      ),
+bottomNavigationBar: BottomNavigationBar(
+  items: const <BottomNavigationBarItem>[
+    BottomNavigationBarItem(
+      icon: Icon(Icons.camera_alt),
+      label: '',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.person),
+      label: '',
+    ),
+  ],
+  currentIndex: _selectedIndex, // Establecer el índice seleccionado
+  selectedItemColor: const Color.fromRGBO(16, 202, 196, 1),
+  onTap: (int index) {
+    setState(() {
+      _selectedIndex = index;
+      if (index == 0) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => CameraWidget(
+              uid: widget.uid,
+            ),
+          ),
+        );
+      } else if (index == 1) {
+        //Navigator.push(
+          //context,
+          ///MaterialPageRoute(
+        //    builder: (context) => CameraWidget(), // Cambia a CameraWidget
+         // ),
+       // );
+      } 
+    });
+  },
+),
+    );
   }
+}
+
 }
