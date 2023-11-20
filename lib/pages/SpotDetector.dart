@@ -89,7 +89,8 @@ class ObjectDetection {
     log('Processing outputs...');
     // Location
     final locationsRaw = output.first.first as List<double>;
-    final locations = locationsRaw.map((value) => (value * 300).toInt()).toList();
+    final locations =
+        locationsRaw.map((value) => (value * 300).toInt()).toList();
     log('Locations: $locations');
 
     // Classes
@@ -140,7 +141,7 @@ class ObjectDetection {
 
     log('Done.');
 
-  return img.encodeJpg(imageInput);
+    return img.encodeJpg(imageInput);
 //    return img.encodeJpg(imageInput);
   }
 
@@ -157,15 +158,13 @@ class ObjectDetection {
 // Classes: [1, 7],
 // Scores: [1, 7],
 // Number of detections: [1]
-final output = {
-   
-  0: [List<num>.filled(8, 1)],
-  1: [List<num>.filled(8, 1)],
-  2: [List<num>.filled(10, 0)],
-  3: [1],
-};
+    final output = {
+      0: [List<num>.filled(7, 0)],
+      1: [List<num>.filled(7, 0)],
+      2: [List<num>.filled(10, 0)],
+      3: [1],
+    };
 
-  
     _interpreter!.runForMultipleInputs([input], output);
     log(output.values.toString());
     return output.values.toList();
