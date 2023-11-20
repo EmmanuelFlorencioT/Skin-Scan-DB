@@ -5,14 +5,17 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
+import 'package:tflite_flutter/tflite_flutter.dart' as TFLiteF;
+
 import 'camera_r_g_model.dart';
+import 'package:camera/camera.dart';
+import 'package:skinscan/index.dart';
 export 'camera_r_g_model.dart';
 
 class CameraRGWidget extends StatefulWidget {
   final String uid;
-  const CameraRGWidget({required this.uid, Key? key}) : super(key: key);
+  final XFile? Xfile;
+  const CameraRGWidget({required this.Xfile,required this.uid, Key? key}) : super(key: key);
 
   @override
   _CameraRGWidgetState createState() => _CameraRGWidgetState();
@@ -31,13 +34,13 @@ class _CameraRGWidgetState extends State<CameraRGWidget> {
     super.initState();
     _model = createModel(context, () => CameraRGModel());
   }
-
    @override
   void dispose() {
     _model.dispose();
 
     super.dispose();
   }
+  
 
   @override
   Widget build(BuildContext context) {

@@ -1,4 +1,5 @@
 import 'package:camera/camera.dart';
+import 'package:skinscan/checar.dart';
 import 'package:skinscan/index.dart';
 import 'package:skinscan/pages/perfil/perfil_widget.dart';
 import 'dart:io';
@@ -23,7 +24,7 @@ import 'package:provider/provider.dart';
 
 import 'camera_capture_confirmation_model.dart';
 export 'camera_capture_confirmation_model.dart';
-
+import 'package:skinscan/pages/SpotDetector.dart';
 class CameraCaptureConfirmationWidget extends StatefulWidget {
   final XFile? Xfile;
   final String uid;
@@ -133,8 +134,8 @@ Widget getImageWidget() {
                     // print('Button pressed ...');
                     Navigator.push(
                     context,
-                    // MaterialPageRoute(builder: (context) => CameraRBWidget()),
-                    MaterialPageRoute(builder: (context) => CameraRGWidget(uid: widget.uid,)),
+                     MaterialPageRoute(builder: (context) => MyHome()),
+                    //MaterialPageRoute(builder: (context) => CameraRGWidget(uid: widget.uid,Xfile: widget.Xfile,)),
                   );
                   },
                   text: 'Confirmar Captura',
