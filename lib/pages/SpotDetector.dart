@@ -14,13 +14,14 @@
  * limitations under the License.
  */
 import 'dart:developer';
+import 'dart:ffi';
 import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:image/image.dart' as img;
 import 'package:tflite_flutter/tflite_flutter.dart';
 
 class ObjectDetection {
-  static const String _modelPath = 'assets/images/model.tflite';
+  static const String _modelPath = 'assets/images/model_latest.tflite';
   static const String _labelPath = 'assets/images/labels.txt';
 
   Interpreter? _interpreter;
@@ -47,8 +48,15 @@ class ObjectDetection {
     }
 
     log('Loading interpreter...');
-    _interpreter =
-        await Interpreter.fromAsset(_modelPath, options: interpreterOptions);
+
+    try {
+      _interpreter =
+          await Interpreter.fromAsset(_modelPath, options: interpreterOptions);
+      print("Model Loaded Successfully!!!!!!");
+      print(_interpreter!.getInputTensor(0).shape);
+    } catch (e) {
+      print("Error while leading the interpreter!");
+    }
   }
 
   Future<void> _loadLabels() async {
@@ -72,7 +80,7 @@ class ObjectDetection {
       height: 224,
     );
 
-    // Creating matrix representation, [300, 300, 3]
+    // Creating matrix representation, [224, 224, 3]
     final imageMatrix = List.generate(
       imageInput.height,
       (y) => List.generate(
@@ -86,71 +94,32 @@ class ObjectDetection {
 
     final output = _runInference(imageMatrix);
 
-    log('Processing outputs...');
-    // Location
-    final locationsRaw = output.first.first as List<double>;
-    final locations =
-        locationsRaw.map((value) => (value * 300).toInt()).toList();
-    log('Locations: $locations');
+    print(output.toString());
 
-    // Classes
-    final classesRaw = output.elementAt(1).first as List<num>;
-    final classes = classesRaw.map((value) => value.toInt()).toList();
-    log('Classes: $classes');
+    final predictionResult = output[0] as List<double>;
+    double maxElement = predictionResult.reduce(
+      (double maxElement, double element) =>
+          element > maxElement ? element : maxElement,
+    );
 
-    // Scores
-    final scores = output.elementAt(2).first as List<num>;
-    log('Scores: $scores');
+    String result = _labels![predictionResult.indexOf(maxElement)];
 
-    // Number of detections
-    final numberOfDetectionsRaw = output.last.first as int;
-    final numberOfDetections = numberOfDetectionsRaw.toInt();
-    log('Number of detections: $numberOfDetections');
+    // Crear una lista de bytes
+    List<int> bytes = [1, 2, 3, 4, 5];
+    // Crear un Uint8List a partir de la lista de bytes
+    Uint8List uint8List = Uint8List.fromList(bytes);
 
-    log('Classifying detected objects...');
-    final List<String> classication = [];
-    for (var i = 0; i < numberOfDetections; i++) {
-      classication.add(_labels![classes[i]]);
-    }
+    print('Selected Class: $result');
 
-    log('Outlining objects...');
-    for (var i = 0; i < numberOfDetections; i++) {
-      if (scores[i] > 0.6) {
-        // Rectangle drawing
-        img.drawRect(
-          imageInput,
-          x1: locations[i],
-          y1: locations[i],
-          x2: locations[i],
-          y2: locations[i],
-          color: img.ColorRgb8(255, 0, 0),
-          thickness: 3,
-        );
-
-        // Label drawing
-        img.drawString(
-          imageInput,
-          '${classication[i]} ${scores[i]}',
-          font: img.arial14,
-          x: locations[i] + 1,
-          y: locations[i] + 1,
-          color: img.ColorRgb8(255, 0, 0),
-        );
-      }
-    }
-
-    log('Done.');
-
-    return img.encodeJpg(imageInput);
-//    return img.encodeJpg(imageInput);
+    return uint8List;
   }
 
-  List<List<Object>> _runInference(
+  List<List<num>> _runInference(
     List<List<List<num>>> imageMatrix,
   ) {
     log('Running inference...');
 
-    // Set input tensor [1, 300, 300, 3]
+    // Set input tensor [1, 224, 224, 3]
     final input = [imageMatrix];
 
 // Set output tensor
@@ -158,15 +127,10 @@ class ObjectDetection {
 // Classes: [1, 7],
 // Scores: [1, 7],
 // Number of detections: [1]
-    final output = {
-      0: [List<num>.filled(7, 0)],
-      1: [List<num>.filled(7, 0)],
-      2: [List<num>.filled(10, 0)],
-      3: [1],
-    };
+    final output = [List<num>.filled(7, 0)];
 
-    _interpreter!.runForMultipleInputs([input], output);
-    log(output.values.toString());
-    return output.values.toList();
+    _interpreter!.run(input, output);
+    log(output.toString());
+    return output;
   }
 }

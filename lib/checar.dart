@@ -82,7 +82,9 @@ class _MyHomeState extends State<MyHome> {
                         source: ImageSource.gallery,
                       );
                       if (result != null) {
+                        print('Image uploaded');
                         image = objectDetection!.analyseImage(result.path);
+                        print(image?.length.toString());
                         setState(() {});
                       }
                     },
