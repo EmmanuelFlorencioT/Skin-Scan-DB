@@ -134,7 +134,7 @@ Widget getImageWidget() {
                     // print('Button pressed ...');
                     Navigator.push(
                     context,
-                     MaterialPageRoute(builder: (context) => MyHome()),
+                     MaterialPageRoute(builder: (context) => CameraRGWidget(uid: widget.uid,Xfile: widget.Xfile)),
                     //MaterialPageRoute(builder: (context) => CameraRGWidget(uid: widget.uid,Xfile: widget.Xfile,)),
                   );
                   },

@@ -67,7 +67,7 @@ class _MyHomeState extends State<MyHome> {
                           source: ImageSource.camera,
                         );
                         if (result != null) {
-                          image = objectDetection!.analyseImage(result.path);
+                         objectDetection!.analyseImage(result.path);
                           setState(() {});
                         }
                       },
@@ -82,7 +82,7 @@ class _MyHomeState extends State<MyHome> {
                         source: ImageSource.gallery,
                       );
                       if (result != null) {
-                        image = objectDetection!.analyseImage(result.path);
+                       // image = objectDetection!.analyseImage(result.path);
                         setState(() {});
                       }
                     },
