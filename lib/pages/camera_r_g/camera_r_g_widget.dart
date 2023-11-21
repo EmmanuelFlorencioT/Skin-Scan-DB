@@ -116,10 +116,10 @@ Widget getImageWidget() {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 80.0, 0.0, 0.0),
                 child: Text(
-                  'No Dañino',
+                  (labell=='nv' || labell=='df' || labell=='vasc') ? 'No daniño' : 'Daniño',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Poppins',
-                        color: Color.fromRGBO(48, 140, 137, 1),
+                        color: (labell=='nv' || labell=='df' || labell=='vasc') ? Color.fromRGBO(48, 140, 137, 1) : Color(0xFFEA2A2A),
                         fontSize: 30.0,
                       ),
                 ),

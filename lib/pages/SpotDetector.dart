@@ -21,7 +21,7 @@ import 'package:image/image.dart' as img;
 import 'package:tflite_flutter/tflite_flutter.dart';
  
 class ObjectDetection {
-  static const String _modelPath = 'assets/images/model.tflite';
+  static const String _modelPath = 'assets/images/model_latest.tflite';
   static const String _labelPath = 'assets/images/labels.txt';
  
   Interpreter? _interpreter;
