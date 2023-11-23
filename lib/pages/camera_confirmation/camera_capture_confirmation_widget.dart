@@ -1,5 +1,4 @@
 import 'package:camera/camera.dart';
-import 'package:skinscan/checar.dart';
 import 'package:skinscan/index.dart';
 import 'package:skinscan/pages/perfil/perfil_widget.dart';
 import 'dart:io';
@@ -26,38 +25,28 @@ import 'camera_capture_confirmation_model.dart';
 export 'camera_capture_confirmation_model.dart';
 import 'package:skinscan/pages/SpotDetector.dart';
 
-typedef UpdateImageFile = void Function(XFile? newImage);
-
 class CameraCaptureConfirmationWidget extends StatefulWidget {
   final XFile? Xfile;
   final String uid;
-  final UpdateImageFile? updateImageFile;
-  const CameraCaptureConfirmationWidget({
-    required this.Xfile,
-    required this.uid,
-    this.updateImageFile,
-    Key? key,
-  }) : super(key: key);
-  
+  const CameraCaptureConfirmationWidget(
+      {required this.Xfile, required this.uid, Key? key})
+      : super(key: key);
   @override
   _CameraCaptureConfirmationWidgetState createState() =>
       _CameraCaptureConfirmationWidgetState();
 }
 
 class _CameraCaptureConfirmationWidgetState
-       extends State<CameraCaptureConfirmationWidget> {
+    extends State<CameraCaptureConfirmationWidget> {
   late CameraCaptureConfirmationModel _model;
   final scaffoldKey = GlobalKey<ScaffoldState>();
   bool kIsWeb = const bool.fromEnvironment('dart.library.js_util');
   int _selectedIndex = 0;
-  XFile? _imageFile;
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => CameraCaptureConfirmationModel());
-    _imageFile = widget.Xfile;
-    widget.updateImageFile?.call(_imageFile);
   }
 
   @override
@@ -78,22 +67,22 @@ class _CameraCaptureConfirmationWidgetState
         ),
       );
     }
-@override
-Widget getImageWidget() {
-  if (_imageFile != null) {
-    if (kIsWeb) {
-      return Image.network(_imageFile!.path,
-                fit: BoxFit.cover);
-    } else {
-      return Image.file(File(_imageFile!.path),
-                fit: BoxFit.cover,);
+    @override
+    Widget getImageWidget() {
+      if (_imageFile != null) {
+        if (kIsWeb) {
+          return Image.network(_imageFile!.path, fit: BoxFit.cover);
+        } else {
+          return Image.file(
+            File(_imageFile!.path),
+            fit: BoxFit.cover,
+          );
+        }
+      } else {
+        //return CameraPreview(_controller);
+        return Container();
+      }
     }
-  } else {
-    //return CameraPreview(_controller);
-    return Container();
-  }
-}
-
 
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
@@ -106,8 +95,8 @@ Widget getImageWidget() {
           top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
-            children: [              
-               Row(
+            children: [
+              Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Expanded(
@@ -117,11 +106,11 @@ Widget getImageWidget() {
                         'Escaner',
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Poppins',
-                          color: Color(0xFF767676),
-                          fontSize: 50,
-                          fontWeight: FontWeight.normal,
-                        ),
+                              fontFamily: 'Poppins',
+                              color: Color(0xFF767676),
+                              fontSize: 50,
+                              fontWeight: FontWeight.normal,
+                            ),
                       ),
                     ),
                   ),
@@ -135,21 +124,25 @@ Widget getImageWidget() {
                     width: double.infinity,
                     height: 280,
                     child: getImageWidget(),
-                  ), 
                   ),
-                
-                
+                ),
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 25, 0, 0),
                 child: FFButtonWidget(
                   onPressed: () {
                     // print('Button pressed ...');
+
                     Navigator.push(
-                    context,
-                     MaterialPageRoute(builder: (context) => MyHome()),
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CameraRGWidget(
+                          uid: widget.uid,
+                          Xfile: widget.Xfile,
+                        ),
+                      ),
+                    );
                     //MaterialPageRoute(builder: (context) => CameraRGWidget(uid: widget.uid,Xfile: widget.Xfile,)),
-                  );
                   },
                   text: 'Confirmar Captura',
                   options: FFButtonOptions(
@@ -176,11 +169,13 @@ Widget getImageWidget() {
                   onPressed: () {
                     // print('Button pressed ...');
                     Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => CameraWidget(uid: widget.uid,)),
-                  );
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CameraWidget(
+                                uid: widget.uid,
+                              )),
+                    );
                   },
-
                   text: 'Volver a capturar imagen',
                   options: FFButtonOptions(
                     width: 210,
@@ -205,35 +200,37 @@ Widget getImageWidget() {
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
-  items: const <BottomNavigationBarItem>[
-    BottomNavigationBarItem(
-      icon: Icon(Icons.camera_alt),
-      label: '',
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.person),
-      label: '',
-    ),
-  ],
-  currentIndex: _selectedIndex, // Establecer el índice seleccionado
-  selectedItemColor: Color(0xFF10CAC4), // Cambia el color de ítem seleccionado
-  onTap: (int index) {
-    setState(() {
-      if (index == 0) {
-        // Navegar a la página de cámara actual.
-      } else if (index == 1) {
-        // Navegar a la página de perfil (PerfilWidget) o lo que desees.
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => PerfilWidget(uid: widget.uid,),
-          ),
-        );
-      }
-    });
-  },
-)
-,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.camera_alt),
+              label: '',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: '',
+            ),
+          ],
+          currentIndex: _selectedIndex, // Establecer el índice seleccionado
+          selectedItemColor:
+              Color(0xFF10CAC4), // Cambia el color de ítem seleccionado
+          onTap: (int index) {
+            setState(() {
+              if (index == 0) {
+                // Navegar a la página de cámara actual.
+              } else if (index == 1) {
+                // Navegar a la página de perfil (PerfilWidget) o lo que desees.
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PerfilWidget(
+                      uid: widget.uid,
+                    ),
+                  ),
+                );
+              }
+            });
+          },
+        ),
       ),
     );
   }

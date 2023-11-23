@@ -1,19 +1,20 @@
 /*
- * Copyright 2023 The TensorFlow Authors. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *             http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+* Copyright 2023 The TensorFlow Authors. All Rights Reserved.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*             http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
 import 'dart:developer';
+import 'dart:async';
 import 'dart:ffi';
 import 'dart:io';
 import 'package:flutter/services.dart';
@@ -26,15 +27,22 @@ class ObjectDetection {
 
   Interpreter? _interpreter;
   List<String>? _labels;
+  Completer<void> _initializationCompleter = Completer<void>();
 
   ObjectDetection() {
-    _loadModel();
-    _loadLabels();
+    initializeSpotDetector();
+    log('Done.');
+  }
+
+  Future<void> initializeSpotDetector() async {
+    await _loadLabels();
+    await _loadModel();
+    _initializationCompleter.complete();
     log('Done.');
   }
 
   Future<void> _loadModel() async {
-    log('Loading interpreter options...');
+    print('Loading interpreter options...');
     final interpreterOptions = InterpreterOptions();
 
     // Use XNNPACK Delegate
@@ -47,8 +55,6 @@ class ObjectDetection {
       interpreterOptions.addDelegate(GpuDelegate());
     }
 
-    log('Loading interpreter...');
-
     try {
       _interpreter =
           await Interpreter.fromAsset(_modelPath, options: interpreterOptions);
@@ -60,13 +66,15 @@ class ObjectDetection {
   }
 
   Future<void> _loadLabels() async {
-    log('Loading labels...');
+    print('Loading labels...');
     final labelsRaw = await rootBundle.loadString(_labelPath);
     _labels = labelsRaw.split('\n');
   }
 
-  Uint8List analyseImage(String imagePath) {
-    log('Analysing image...');
+  Future<String> analyseImage(String imagePath) async {
+    await _initializationCompleter.future;
+
+    print('Analysing image...');
     // Reading image bytes from file
     final imageData = File(imagePath).readAsBytesSync();
 
@@ -94,39 +102,31 @@ class ObjectDetection {
 
     final output = _runInference(imageMatrix);
 
-    print(output.toString());
-
     final predictionResult = output[0] as List<double>;
     double maxElement = predictionResult.reduce(
       (double maxElement, double element) =>
           element > maxElement ? element : maxElement,
     );
 
-    String result = _labels![predictionResult.indexOf(maxElement)];
+    double levelOfConfidence = maxElement * 100;
+    Future<String> result = Future<String>.delayed(
+        const Duration(seconds: 1),
+        () =>
+            //Concatenation of label and level of confidence
+            "${_labels![predictionResult.indexOf(maxElement)]}#${levelOfConfidence.toStringAsFixed(2)}");
 
-    // Crear una lista de bytes
-    List<int> bytes = [1, 2, 3, 4, 5];
-    // Crear un Uint8List a partir de la lista de bytes
-    Uint8List uint8List = Uint8List.fromList(bytes);
-
-    print('Selected Class: $result');
-
-    return uint8List;
+    return result;
   }
 
   List<List<num>> _runInference(
     List<List<List<num>>> imageMatrix,
   ) {
-    log('Running inference...');
+    print('Running inference...');
 
     // Set input tensor [1, 224, 224, 3]
     final input = [imageMatrix];
+    log(input.toString());
 
-// Set output tensor
-// Locations: [1, 7, 4]
-// Classes: [1, 7],
-// Scores: [1, 7],
-// Number of detections: [1]
     final output = [List<num>.filled(7, 0)];
 
     _interpreter!.run(input, output);

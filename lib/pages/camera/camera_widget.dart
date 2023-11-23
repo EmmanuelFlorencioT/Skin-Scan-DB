@@ -24,11 +24,13 @@ import 'package:provider/provider.dart';
 
 import 'camera_model.dart';
 export 'camera_model.dart';
-String uuu="";
+
+String uuu = "";
+
 class CameraWidget extends StatefulWidget {
-  final String uid;  
-  const CameraWidget({ Key? key, required this.uid}) : super(key: key);
-  
+  final String uid;
+  const CameraWidget({Key? key, required this.uid}) : super(key: key);
+
   @override
   _CameraWidgetState createState() => _CameraWidgetState();
 }
@@ -39,12 +41,12 @@ class _CameraWidgetState extends State<CameraWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   int _selectedIndex = 0; // Índice del elemento de cámara
-  bool photo=false;
+  bool photo = false;
   late CameraController _controller;
-  final String uid="";
+  final String uid = "";
   late Future<void> _initializeControllerFuture;
   XFile? _imageFile; // Variable to store the captured image
-  String targetPath="";
+  String targetPath = "";
   Widget ImageWidget = Image.network("");
   bool kIsWeb = const bool.fromEnvironment('dart.library.js_util');
   @override
@@ -54,11 +56,12 @@ class _CameraWidgetState extends State<CameraWidget> {
     _model = CameraModel(); // Crear una instancia de CameraModel
     _model.initState(context); // Inicializar el modelo si es necesario
   }
+
   @override
   Future<void> _initializeCamera() async {
     final cameras = await availableCameras();
     final camera = cameras.first; // Use la primera cámara disponible
-    
+
     _controller = CameraController(camera, ResolutionPreset.ultraHigh);
     await _controller.initialize();
     if (!mounted) {
@@ -67,11 +70,11 @@ class _CameraWidgetState extends State<CameraWidget> {
 
     setState(() {});
   }
-  
+
   Future<void> saveImageToAssets(String imagePath) async {
     final appDir = await getApplicationDocumentsDirectory();
     final fileName = 'snapshot.png';
-    targetPath ="";
+    targetPath = "";
     //final targetPath = 'assets\\';
     // Copy the image to the assets location
     File(imagePath).copy(targetPath);
@@ -82,8 +85,8 @@ class _CameraWidgetState extends State<CameraWidget> {
     // You can show a notification or message to the user here
     //Scaffold.of(context).showSnackBar(SnackBar(content: Text('Image saved in assets')));
   }
-Future<void> ImageSave()async
-{
+
+  Future<void> ImageSave() async {
     try {
       // Asegúrate que tu cámara esta inicializada
       await _initializeControllerFuture;
@@ -91,7 +94,7 @@ Future<void> ImageSave()async
       // Construye la ruta donde la imagen se guardará
       // usando el plugin `path`.
       final path = join(
-        // En este ejemplo, guarde la imagen en el directorio temporal. Encuentra 
+        // En este ejemplo, guarde la imagen en el directorio temporal. Encuentra
         // el directorio temporal usando el plugin `path_provider`.
         (await getTemporaryDirectory()).path,
         '${DateTime.now()}.png',
@@ -103,80 +106,93 @@ Future<void> ImageSave()async
       // Si se produce un error, regístralo en la consola.
       print(e);
     }
-}
-Future<void> saveImageLocally(XFile imageFile) async {
-  final directory = await getTemporaryDirectory();
-  final imagePath = '${directory.path}/snapshot.png';
-  targetPath = imagePath;
-  final imageFileBytes = File(imageFile.path).readAsBytesSync();
-  File(imagePath).writeAsBytesSync(imageFileBytes);
-  setState((){
-  targetPath = imagePath;
-  });
-  // Ahora, la imagen se ha guardado localmente en el directorio temporal.
-  // Puedes acceder a imagePath para usar la ubicación de la imagen guardada.
-}
-Future<void> pickImage() async {
-  final picker = ImagePicker();
-  try {
-    final pickedFiles = await picker.pickMultiImage();
-    if (pickedFiles != null) {
-      setState(() {
-        _imageFile = pickedFiles.first;
-      });
-    } else {
-      // El usuario canceló la selección, no hagas nada o muestra un mensaje.
-    }
-  } catch (e) {
-    // Maneja cualquier error que pueda ocurrir durante la selección de imágenes.
-    print('Error al seleccionar imágenes: $e');
-  }
-}
-
-Future<void> _takePicture() async {
-  if (!_controller.value.isInitialized) {
-    return;
   }
 
-  try {
-    final XFile imageFile = await _controller.takePicture();
+  Future<void> saveImageLocally(XFile imageFile) async {
+    final directory = await getTemporaryDirectory();
+    final imagePath = '${directory.path}/snapshot.png';
+    targetPath = imagePath;
+    final imageFileBytes = File(imageFile.path).readAsBytesSync();
+    File(imagePath).writeAsBytesSync(imageFileBytes);
     setState(() {
-      _imageFile = imageFile;
+      targetPath = imagePath;
     });
-  } catch (e) {
-    print("Error al capturar la imagen: $e");
+    // Ahora, la imagen se ha guardado localmente en el directorio temporal.
+    // Puedes acceder a imagePath para usar la ubicación de la imagen guardada.
   }
-}
 
-Widget getPickFileWidget(){
-  if (_imageFile == null) {
-    if (kIsWeb) {
-      return Image.network(_imageFile!.path,
-                fit: BoxFit.cover,);
-    } else {
-      return Image.file(File(_imageFile!.path),
-                fit: BoxFit.cover,);
+  Future<void> pickImage() async {
+    final picker = ImagePicker();
+    try {
+      final pickedFiles = await picker.pickMultiImage();
+      if (pickedFiles != null) {
+        setState(() {
+          _imageFile = pickedFiles.first;
+        });
+      } else {
+        // El usuario canceló la selección, no hagas nada o muestra un mensaje.
+      }
+    } catch (e) {
+      // Maneja cualquier error que pueda ocurrir durante la selección de imágenes.
+      print('Error al seleccionar imágenes: $e');
     }
-  } else {
-    return CameraPreview(_controller);
-  }  
-}
-
-Widget getImageWidget() {
-  if (_imageFile != null) {
-    return Image.file(
-      File(_imageFile!.path),
-      fit: BoxFit.cover,
-    );
-  } else {
-    return CameraPreview(_controller);
   }
-}
+
+  Future<void> _takePicture() async {
+    if (!_controller.value.isInitialized) {
+      return;
+    }
+
+    try {
+      final XFile imageFile = await _controller.takePicture();
+      setState(() {
+        _imageFile = imageFile;
+      });
+    } catch (e) {
+      print("Error al capturar la imagen: $e");
+    }
+  }
+
+  Widget getPickFileWidget() {
+    if (_imageFile == null) {
+      if (kIsWeb) {
+        return Image.network(
+          _imageFile!.path,
+          fit: BoxFit.cover,
+        );
+      } else {
+        return Image.file(
+          File(_imageFile!.path),
+          fit: BoxFit.cover,
+        );
+      }
+    } else {
+      return CameraPreview(_controller);
+    }
+  }
+
+  Widget getImageWidget() {
+    if (_imageFile != null) {
+      if (kIsWeb) {
+        return Image.network(
+          _imageFile!.path,
+          fit: BoxFit.cover,
+        );
+      } else {
+        return Image.file(
+          File(_imageFile!.path),
+          fit: BoxFit.cover,
+        );
+      }
+    } else {
+      return CameraPreview(_controller);
+    }
+  }
 
   @override
   void dispose() {
+    _controller.dispose();
     _model.dispose();
-
     super.dispose();
   }
 
@@ -205,8 +221,8 @@ Widget getImageWidget() {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-               // Flexible CameraPreview
-              
+              // Flexible CameraPreview
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -217,18 +233,17 @@ Widget getImageWidget() {
                         'Escaner',
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Poppins',
-                          color: Color(0xFF767676),
-                          fontSize: 50,
-                          fontWeight: FontWeight.normal,
-                        ),
+                              fontFamily: 'Poppins',
+                              color: Color(0xFF767676),
+                              fontSize: 50,
+                              fontWeight: FontWeight.normal,
+                            ),
                       ),
                     ),
                   ),
                 ],
               ),
               if (!photo)
-              
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 150, 0, 0),
                   child: FFButtonWidget(
@@ -237,10 +252,10 @@ Widget getImageWidget() {
                       setState(() {
                         photo;
                       });
-                    //  Navigator.push(
-                    //  context,
-                    //  MaterialPageRoute(builder: (context) => Camera()),
-                    //);
+                      //  Navigator.push(
+                      //  context,
+                      //  MaterialPageRoute(builder: (context) => Camera()),
+                      //);
                     },
                     text: 'Tomar una imagen',
                     options: FFButtonOptions(
@@ -248,10 +263,11 @@ Widget getImageWidget() {
                       padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
                       iconPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                       color: Color(0xFF10CAC4),
-                      textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Poppins',
-                        color: Colors.white,
-                      ),
+                      textStyle:
+                          FlutterFlowTheme.of(context).titleSmall.override(
+                                fontFamily: 'Poppins',
+                                color: Colors.white,
+                              ),
                       elevation: 3,
                       borderSide: BorderSide(
                         color: Colors.transparent,
@@ -261,17 +277,21 @@ Widget getImageWidget() {
                     ),
                   ),
                 ),
-                if (!photo)
+              if (!photo)
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
                   child: FFButtonWidget(
-                   onPressed: ()async {
+                    onPressed: () async {
                       await pickImage();
-                      if(_imageFile!=null){
-                      Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => CameraCaptureConfirmationWidget(Xfile: _imageFile,uid: widget.uid)),
-                    );}
+                      if (_imageFile != null) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  CameraCaptureConfirmationWidget(
+                                      Xfile: _imageFile, uid: widget.uid)),
+                        );
+                      }
                     },
                     text: 'Subir imagen',
                     icon: Icon(
@@ -284,10 +304,11 @@ Widget getImageWidget() {
                       padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
                       iconPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                       color: Color(0xFF767676),
-                      textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Poppins',
-                        color: Colors.white,
-                      ),
+                      textStyle:
+                          FlutterFlowTheme.of(context).titleSmall.override(
+                                fontFamily: 'Poppins',
+                                color: Colors.white,
+                              ),
                       elevation: 3,
                       borderSide: BorderSide(
                         color: Colors.transparent,
@@ -296,130 +317,140 @@ Widget getImageWidget() {
                       borderRadius: BorderRadius.circular(50),
                     ),
                   ),
-                ) 
+                )
               else
                 FutureBuilder(
-              future: _initializeControllerFuture,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.done) {
-                  if (_controller == null || !_controller.value.isInitialized) {
-                    return Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  } else {
-                    if(_imageFile!=null){
-                      return Center(
-              child: 
-              getImageWidget()
-              /*Image.network(
+                  future: _initializeControllerFuture,
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      if (_controller == null ||
+                          !_controller.value.isInitialized) {
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      } else {
+                        if (_imageFile != null) {
+                          return Center(
+                            child: getImageWidget()
+                            /*Image.network(
                 _imageFile!.path,
                 fit: BoxFit.cover,
-              )*/,
-                      );
-                    }else
-                    {
-                    return Center(
-                      child: Container(
-              // width: MediaQuery.of(context).size.height*0.8,
-              // height: MediaQuery.of(context).size.height*0.8,
-              width: screenWidth, // Ancho completo de la pantalla
-              height: screenHeight * 0.8,
-              child:CameraPreview(_controller,child:                 
-              Padding(
-                  // padding: EdgeInsetsDirectional.fromSTEB(75, 380, 75, 25),
-                  // padding: EdgeInsetsDirectional.fromSTEB(75, 80, 75, 50),
-                  padding: EdgeInsetsDirectional.fromSTEB(
-                    screenWidth * 0.10, 
-                    screenHeight * 0.70,
-                    screenWidth * 0.10, 
-                    screenHeight * 0.05, 
-                  ),
+              )*/
+                            ,
+                          );
+                        } else {
+                          return Center(
+                            child: Container(
+                              // width: MediaQuery.of(context).size.height*0.8,
+                              // height: MediaQuery.of(context).size.height*0.8,
+                              width:
+                                  screenWidth, // Ancho completo de la pantalla
+                              height: screenHeight * 0.8,
+                              child: CameraPreview(
+                                _controller,
+                                child: Padding(
+                                  // padding: EdgeInsetsDirectional.fromSTEB(75, 380, 75, 25),
+                                  // padding: EdgeInsetsDirectional.fromSTEB(75, 80, 75, 50),
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                    screenWidth * 0.10,
+                                    screenHeight * 0.70,
+                                    screenWidth * 0.10,
+                                    screenHeight * 0.05,
+                                  ),
 
-                  child: FFButtonWidget(
-onPressed: () async {
-  await _takePicture();
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) => CameraCaptureConfirmationWidget(Xfile: _imageFile, uid: widget.uid),
-    ),
-  );
-},
-                    text: 'Toma imagen',
-                    options: FFButtonOptions(
-                      height:40,
-                      // height:20,
-                      width: 50,
-                      padding: EdgeInsetsDirectional.fromSTEB(6, 0, 6, 0),
-                      iconPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                      color: Color(0xFF10CAC4),
-                      textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Poppins',
-                        color: Colors.white,
-                      ),
-                      elevation: 3,
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(50),
-                    ),
-                  ),
-                ),),
-                      ), 
-                      
-                      
-                      
-                    );
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      await _takePicture();
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              CameraCaptureConfirmationWidget(
+                                                  Xfile: _imageFile,
+                                                  uid: widget.uid),
+                                        ),
+                                      );
+                                    },
+                                    text: 'Toma imagen',
+                                    options: FFButtonOptions(
+                                      height: 40,
+                                      // height:20,
+                                      width: 50,
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          6, 0, 6, 0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0, 0, 0, 0),
+                                      color: Color(0xFF10CAC4),
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: Colors.white,
+                                          ),
+                                      elevation: 3,
+                                      borderSide: BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1,
+                                      ),
+                                      borderRadius: BorderRadius.circular(50),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );
+                        }
+                      }
+                    } else {
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
                     }
-                  }
-                } else {
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              },
-            ),
+                  },
+                ),
 
               //condicion inicia
               //condicion termina
             ],
           ),
         ),
-bottomNavigationBar: BottomNavigationBar(
-  items: const <BottomNavigationBarItem>[
-    BottomNavigationBarItem(
-      icon: Icon(Icons.camera_alt),
-      label: '',
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.person),
-      label: '',
-    ),
-  ],
-  currentIndex: _selectedIndex, // Establecer el índice seleccionado
-  selectedItemColor: Color(0xFF10CAC4), // Cambia el color de ítem seleccionado
-  onTap: (int index) {
-    setState(() {
-      if (index == 0) {
-        // Navegar a la página de cámara actual.
-      } else if (index == 1) {
-        setState(() {
-        uuu = widget.uid;  
-        });
-        
-        // Navegar a la página de perfil (PerfilWidget) o lo que desees.
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) =>  PerfilWidget(uid: uuu,),
-          ),
-        );
-      }
-    });
-  },
-)
-,
+        bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.camera_alt),
+              label: '',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: '',
+            ),
+          ],
+          currentIndex: _selectedIndex, // Establecer el índice seleccionado
+          selectedItemColor:
+              Color(0xFF10CAC4), // Cambia el color de ítem seleccionado
+          onTap: (int index) {
+            setState(() {
+              if (index == 0) {
+                // Navegar a la página de cámara actual.
+              } else if (index == 1) {
+                setState(() {
+                  uuu = widget.uid;
+                });
+
+                // Navegar a la página de perfil (PerfilWidget) o lo que desees.
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PerfilWidget(
+                      uid: uuu,
+                    ),
+                  ),
+                );
+              }
+            });
+          },
+        ),
       ),
     );
   }

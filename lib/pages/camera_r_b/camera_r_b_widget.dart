@@ -1,18 +1,30 @@
+import 'package:skinscan/pages/SpotDetector.dart';
 import 'package:skinscan/pages/camera/camera_widget.dart';
 import 'package:skinscan/pages/perfil/perfil_widget.dart';
-
+import 'package:flutter/material.dart';
+import 'package:camera/camera.dart';
+import 'dart:io';
+import 'package:skinscan/index.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:flutter/material.dart';
+import 'package:path/path.dart' show join;
+import 'package:universal_platform/universal_platform.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'camera_r_b_model.dart';
 export 'camera_r_b_model.dart';
+import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
 
 class CameraRBWidget extends StatefulWidget {
+  final XFile? Xfile;
   final String uid;
-  const CameraRBWidget({required this.uid,Key? key}) : super(key: key);
+  const CameraRBWidget({required this.Xfile,required this.uid,Key? key}) : super(key: key);
 
   @override
   _CameraRBWidgetState createState() => _CameraRBWidgetState();
@@ -20,10 +32,9 @@ class CameraRBWidget extends StatefulWidget {
 
 class _CameraRBWidgetState extends State<CameraRBWidget> {
   late CameraRBModel _model;
-
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  int _selectedIndex = 0;
+  bool kIsWeb = const bool.fromEnvironment('dart.library.js_util');
+  int _selectedIndex = 0; 
 
   @override
   void initState() {
@@ -40,6 +51,32 @@ class _CameraRBWidgetState extends State<CameraRBWidget> {
 
   @override
   Widget build(BuildContext context) {
+    XFile? _imageFile = widget.Xfile;
+    
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+@override
+Widget getImageWidget() {
+  if (_imageFile != null) {
+    if (kIsWeb) {
+      return Image.network(_imageFile!.path,
+                fit: BoxFit.cover);
+    } else {
+      return Image.file(File(_imageFile!.path),
+                fit: BoxFit.cover,);
+    }
+  } else {
+    //return CameraPreview(_controller);
+    return Container();
+  }
+}
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
