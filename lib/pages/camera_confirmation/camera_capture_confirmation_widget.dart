@@ -42,14 +42,11 @@ class _CameraCaptureConfirmationWidgetState
   final scaffoldKey = GlobalKey<ScaffoldState>();
   bool kIsWeb = const bool.fromEnvironment('dart.library.js_util');
   int _selectedIndex = 0;
-  ObjectDetection? spotDetector;
-  String? label;
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => CameraCaptureConfirmationModel());
-    spotDetector = ObjectDetection();
   }
 
   @override

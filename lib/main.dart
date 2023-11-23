@@ -6,13 +6,19 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:skinscan/pages/home_page/home_page_widget.dart';
 import 'package:skinscan/pages/perfil/perfil_widget.dart';
 import 'package:skinscan/pages/registrate/registrate_widget.dart';
+import 'package:flutter/services.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-  );
-  runApp(const MyApp());
+  );SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]).then((_) {
+    runApp(MyApp());
+  });
+  // runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

@@ -95,6 +95,7 @@
 | **Implementar cámara en el proyecto principal**                                | 29/10/23                 |                      | 03/11/23              |                   | 2 horas                 |                                                        |             |
 | Implementar cámara en el proyecto principal | 30/10/23                 |                      | 02/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz    | En proceso   |
 
+
 #### 6° Sprint Review
 
 |                                                                            | Fecha de Inicio Estimada | Fecha de Inicio Real | Fecha de Fin Estimada | Fecha de Fin Real | Duración (horas) | Responsables                                           | Status      |

@@ -148,20 +148,8 @@ class _CameraWidgetState extends State<CameraWidget> {
       setState(() {
         _imageFile = imageFile;
       });
-// Obtén el directorio de documentos de la aplicación
-      final appDocDir = await getApplicationDocumentsDirectory();
-
-      // Construye la ruta donde la imagen se guardará
-      final imagePath = '${appDocDir.path}/snapshot.png';
-
-      // Guarda la imagen en la ubicación deseada
-      File(imageFile.path).copy(imagePath);
-
-      setState(() {
-        _imageFile = XFile(imagePath);
-      });
     } catch (e) {
-      print("Error capturing the image: $e");
+      print("Error al capturar la imagen: $e");
     }
   }
 
@@ -218,6 +206,8 @@ class _CameraWidgetState extends State<CameraWidget> {
         ),
       );
     }
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
 
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
@@ -231,6 +221,8 @@ class _CameraWidgetState extends State<CameraWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
+              // Flexible CameraPreview
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -349,28 +341,40 @@ class _CameraWidgetState extends State<CameraWidget> {
                         } else {
                           return Center(
                             child: Container(
-                              width: MediaQuery.of(context).size.height * 0.8,
-                              height: MediaQuery.of(context).size.height * 0.6,
+                              // width: MediaQuery.of(context).size.height*0.8,
+                              // height: MediaQuery.of(context).size.height*0.8,
+                              width:
+                                  screenWidth, // Ancho completo de la pantalla
+                              height: screenHeight * 0.8,
                               child: CameraPreview(
                                 _controller,
                                 child: Padding(
+                                  // padding: EdgeInsetsDirectional.fromSTEB(75, 380, 75, 25),
+                                  // padding: EdgeInsetsDirectional.fromSTEB(75, 80, 75, 50),
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      75, 380, 75, 25),
+                                    screenWidth * 0.10,
+                                    screenHeight * 0.70,
+                                    screenWidth * 0.10,
+                                    screenHeight * 0.05,
+                                  ),
+
                                   child: FFButtonWidget(
                                     onPressed: () async {
                                       await _takePicture();
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) =>
-                                                CameraCaptureConfirmationWidget(
-                                                    Xfile: _imageFile,
-                                                    uid: widget.uid)),
+                                          builder: (context) =>
+                                              CameraCaptureConfirmationWidget(
+                                                  Xfile: _imageFile,
+                                                  uid: widget.uid),
+                                        ),
                                       );
                                     },
                                     text: 'Toma imagen',
                                     options: FFButtonOptions(
                                       height: 40,
+                                      // height:20,
                                       width: 50,
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           6, 0, 6, 0),
