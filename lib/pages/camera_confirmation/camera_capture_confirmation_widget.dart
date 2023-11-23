@@ -135,7 +135,6 @@ class _CameraCaptureConfirmationWidgetState
                 child: FFButtonWidget(
                   onPressed: () {
                     // print('Button pressed ...');
-                    label = spotDetector?.analyseImage(_imageFile!.path);
 
                     Navigator.push(
                       context,
@@ -143,7 +142,6 @@ class _CameraCaptureConfirmationWidgetState
                         builder: (context) => CameraRGWidget(
                           uid: widget.uid,
                           Xfile: widget.Xfile,
-                          className: label!,
                         ),
                       ),
                     );

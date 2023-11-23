@@ -15,12 +15,7 @@ export 'camera_r_g_model.dart';
 class CameraRGWidget extends StatefulWidget {
   final String uid;
   final XFile? Xfile;
-  final String className;
-  const CameraRGWidget(
-      {required this.Xfile,
-      required this.uid,
-      required this.className,
-      Key? key})
+  const CameraRGWidget({required this.Xfile, required this.uid, Key? key})
       : super(key: key);
 
   @override
@@ -29,9 +24,8 @@ class CameraRGWidget extends StatefulWidget {
 
 class _CameraRGWidgetState extends State<CameraRGWidget> {
   late CameraRGModel _model;
-  String? labell;
-  ObjectDetection? objectdetection;
-  int _selectedIndex = 0;
+  String labell = '';
+  ObjectDetection? spotDetector = ObjectDetection();
   final scaffoldKey = GlobalKey<ScaffoldState>();
   bool kIsWeb = const bool.fromEnvironment('dart.library.js_util');
 
@@ -39,8 +33,6 @@ class _CameraRGWidgetState extends State<CameraRGWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => CameraRGModel());
-    labell = widget.className;
-    objectdetection = ObjectDetection();
   }
 
   @override
@@ -53,7 +45,7 @@ class _CameraRGWidgetState extends State<CameraRGWidget> {
   @override
   Widget build(BuildContext context) {
     XFile? _imageFile = widget.Xfile;
-    @override
+
     Widget getImageWidget() {
       if (_imageFile != null) {
         if (kIsWeb) {
@@ -73,157 +65,190 @@ class _CameraRGWidgetState extends State<CameraRGWidget> {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: Colors.white,
-      body: (labell != null)
-          ? SafeArea(
-              top: true,
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: EdgeInsets.only(top: 72),
-                          child: Text(
-                            'Escaner',
-                            textAlign: TextAlign.center,
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Poppins',
-                                  color: Color(0xFF767676),
-                                  fontSize: 50,
-                                  fontWeight: FontWeight.normal,
-                                ),
+      body: FutureBuilder(
+        future: _imageFile != null && spotDetector != null
+            ? spotDetector?.analyseImage(_imageFile.path)
+            : null,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.hasData) {
+              labell = snapshot.data!;
+
+              return SafeArea(
+                top: true,
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.only(top: 72),
+                            child: Text(
+                              'Escaner',
+                              textAlign: TextAlign.center,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: Color(0xFF767676),
+                                    fontSize: 50,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
-                    child: Center(
-                      child: Container(
-                        alignment: Alignment.center,
-                        width: double.infinity,
-                        height: 280,
-                        child: getImageWidget(),
+                      ],
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
+                      child: Center(
+                        child: Container(
+                          alignment: Alignment.center,
+                          width: double.infinity,
+                          height: 280,
+                          child: getImageWidget(),
+                        ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 80.0, 0.0, 0.0),
-                    child: Text(
-                      (labell == 'nv' || labell == 'df' || labell == 'vasc')
-                          ? 'No dañino'
-                          : 'Dañino',
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 80.0, 0.0, 0.0),
+                      child: Text(
+                        (labell == 'nv' || labell == 'df' || labell == 'vasc')
+                            ? 'No dañino'
+                            : 'Dañino',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Poppins',
+                              color: (labell == 'nv' ||
+                                      labell == 'df' ||
+                                      labell == 'vasc')
+                                  ? Color.fromRGBO(48, 140, 137, 1)
+                                  : Color(0xFFEA2A2A),
+                              fontSize: 30.0,
+                            ),
+                      ),
+                    ),
+                    Text(
+                      (labell),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Poppins',
-                            color: (labell == 'nv' ||
-                                    labell == 'df' ||
-                                    labell == 'vasc')
-                                ? Color.fromRGBO(48, 140, 137, 1)
-                                : Color(0xFFEA2A2A),
-                            fontSize: 30.0,
+                            fontFamily: 'Readex Pro',
+                            color: Color(0xFF767676),
+                            fontSize: 20.0,
                           ),
                     ),
-                  ),
-                  Text(
-                    (labell!),
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Readex Pro',
-                          color: Color(0xFF767676),
-                          fontSize: 20.0,
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+                      child: FFButtonWidget(
+                        onPressed: () {
+                          // print('Button pressed ...');
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    CameraWidget(uid: widget.uid)),
+                          );
+                        },
+                        text: 'Escanear otra vez',
+                        options: FFButtonOptions(
+                          height: 40.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              24.0, 0.0, 24.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: Color(0xFF10CAC4),
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                  ),
+                          elevation: 3.0,
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(50.0),
                         ),
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
-                    child: FFButtonWidget(
-                      onPressed: () {
-                        // print('Button pressed ...');
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  CameraWidget(uid: widget.uid)),
-                        );
-                      },
-                      text: 'Escanear otra vez',
-                      options: FFButtonOptions(
-                        height: 40.0,
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            24.0, 0.0, 24.0, 0.0),
-                        iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: Color(0xFF10CAC4),
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Poppins',
-                                  color: Colors.white,
-                                ),
-                        elevation: 3.0,
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1.0,
-                        ),
-                        borderRadius: BorderRadius.circular(50.0),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            )
-          : Center(
-              child: InkWell(
-                onTap: () {
-                  if (_imageFile != null) {
-                    labell = objectdetection!.analyseImage(_imageFile.path);
-                  } else {
-                    // Puedes manejar el caso cuando _imageFile es null aquí si es necesario
-                    // Por ejemplo, mostrar un mensaje de error, etc.
-                  }
-                  setState(() {});
-                },
+                  ],
+                ),
+              );
+            } else {
+              return const Center(
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF10CAC4)),
                   semanticsLabel: 'Circular progress indicator',
                 ),
-              ),
-            ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.camera_alt),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: '',
-          ),
-        ],
-        currentIndex: _selectedIndex, // Establecer el índice seleccionado
-        selectedItemColor:
-            Color(0xFF10CAC4), // Cambia el color de ítem seleccionado
-        onTap: (int index) {
-          setState(() {
-            if (index == 0) {
-            } else if (index == 1) {
-              // Navegar a la página de perfil (PerfilWidget) o lo que desees.
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => PerfilWidget(
-                    uid: widget.uid,
-                  ),
-                ),
               );
             }
-          });
+          } else {
+            return const Center(
+              child: CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF10CAC4)),
+                semanticsLabel: 'Circular progress indicator',
+              ),
+            );
+          }
         },
       ),
     );
+
+    // return Scaffold(
+    //   key: scaffoldKey,
+    //   backgroundColor: Colors.white,
+    //   body: (labell != null)
+    //       ?
+    //       : Center(
+    //           child: InkWell(
+    //             onTap: () {
+    //               if (_imageFile != null) {
+    //                 labell = spotDetector!.analyseImage(_imageFile.path);
+    //               } else {
+    //                 // Puedes manejar el caso cuando _imageFile es null aquí si es necesario
+    //                 // Por ejemplo, mostrar un mensaje de error, etc.
+    //               }
+    //               setState(() {});
+    //             },
+    //             child: CircularProgressIndicator(
+    //               valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF10CAC4)),
+    //               semanticsLabel: 'Circular progress indicator',
+    //             ),
+    //           ),
+    //         ),
+    //   bottomNavigationBar: BottomNavigationBar(
+    //     items: const <BottomNavigationBarItem>[
+    //       BottomNavigationBarItem(
+    //         icon: Icon(Icons.camera_alt),
+    //         label: '',
+    //       ),
+    //       BottomNavigationBarItem(
+    //         icon: Icon(Icons.person),
+    //         label: '',
+    //       ),
+    //     ],
+    //     currentIndex: _selectedIndex, // Establecer el índice seleccionado
+    //     selectedItemColor:
+    //         Color(0xFF10CAC4), // Cambia el color de ítem seleccionado
+    //     onTap: (int index) {
+    //       setState(() {
+    //         if (index == 0) {
+    //         } else if (index == 1) {
+    //           // Navegar a la página de perfil (PerfilWidget) o lo que desees.
+    //           Navigator.push(
+    //             context,
+    //             MaterialPageRoute(
+    //               builder: (context) => PerfilWidget(
+    //                 uid: widget.uid,
+    //               ),
+    //             ),
+    //           );
+    //         }
+    //       });
+    //     },
+    //   ),
+    // );
   }
 }

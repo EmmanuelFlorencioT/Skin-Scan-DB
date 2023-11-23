@@ -14,6 +14,7 @@
 * limitations under the License.
 */
 import 'dart:developer';
+import 'dart:async';
 import 'dart:ffi';
 import 'dart:io';
 import 'package:flutter/services.dart';
@@ -26,15 +27,22 @@ class ObjectDetection {
 
   Interpreter? _interpreter;
   List<String>? _labels;
+  Completer<void> _initializationCompleter = Completer<void>();
 
   ObjectDetection() {
-    _loadModel();
-    _loadLabels();
+    initializeSpotDetector();
+    log('Done.');
+  }
+
+  Future<void> initializeSpotDetector() async {
+    await _loadLabels();
+    await _loadModel();
+    _initializationCompleter.complete();
     log('Done.');
   }
 
   Future<void> _loadModel() async {
-    log('Loading interpreter options...');
+    print('Loading interpreter options...');
     final interpreterOptions = InterpreterOptions();
 
     // Use XNNPACK Delegate
@@ -47,8 +55,6 @@ class ObjectDetection {
       interpreterOptions.addDelegate(GpuDelegate());
     }
 
-    log('Loading interpreter...');
-
     try {
       _interpreter =
           await Interpreter.fromAsset(_modelPath, options: interpreterOptions);
@@ -60,13 +66,15 @@ class ObjectDetection {
   }
 
   Future<void> _loadLabels() async {
-    log('Loading labels...');
+    print('Loading labels...');
     final labelsRaw = await rootBundle.loadString(_labelPath);
     _labels = labelsRaw.split('\n');
   }
 
-  String analyseImage(String imagePath) {
-    log('Analysing image...');
+  Future<String> analyseImage(String imagePath) async {
+    await _initializationCompleter.future;
+
+    print('Analysing image...');
     // Reading image bytes from file
     final imageData = File(imagePath).readAsBytesSync();
 
@@ -100,12 +108,13 @@ class ObjectDetection {
           element > maxElement ? element : maxElement,
     );
 
-    String result = _labels![predictionResult.indexOf(maxElement)];
-    // print('Selected Class: $result');
-
     double levelOfConfidence = maxElement * 100;
+    Future<String> result = Future<String>.delayed(
+        const Duration(seconds: 1),
+        () =>
+            //Concatenation of label and level of confidence
+            "${_labels![predictionResult.indexOf(maxElement)]}#${levelOfConfidence.toStringAsFixed(2)}");
 
-    print('Level of Confidence: $levelOfConfidence');
     return result;
   }
 
