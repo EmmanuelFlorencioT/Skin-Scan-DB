@@ -117,6 +117,9 @@
 
 |                                                                            | Fecha de Inicio Estimada | Fecha de Inicio Real | Fecha de Fin Estimada | Fecha de Fin Real | Duración (horas) | Responsables                                           | Status      |
 |----------------------------------------------------------------------------|--------------------------|----------------------|-----------------------|-------------------|------------------|--------------------------------------------------------|-------------|
+| **Implementación del modelo en la app**                      | 20/11/23                 |                      | 21/11/23              |                   | 6 horas                 |                                                        |             |
+| Implementación del modelo en la app                          | 20/11/23                 |                      | 21/11/23              |                   | 6 horas          | Alan Castro Resendiz    | Pendiente   |
+
 | **Pruebas y ajustes**                      | 20/11/23                 |                      | 25/11/23              |                   | 6 horas                 |                                                        |             |
 | Pruebas de eficiencia del modelo y ajustes                          | 20/11/23                 |                      | 23/11/23              |                   | 2 horas          | Emmanuel Florencio Trujillo, Isai Vicente Moreno Lara    | Pendiente   |
 | Pruebas de rendimiento de la aplicación y ajustes                               | 21/11/23                 |                      | 24/11/23              |                   | 2 horas          | Alan Axel Castro Resendiz, Isai Vicente Moreno Lara               | Pendiente   |
